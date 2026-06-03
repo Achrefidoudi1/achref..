@@ -113,7 +113,7 @@ h2{
     opacity: 0.9;
 }
 
-/* Enhanced Photo Layout Grid */
+/* Enhanced Grid Layout for Photos and Videos */
 .photo-grid {
     display: flex;
     justify-content: center;
@@ -129,7 +129,8 @@ h2{
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     transform: rotate(var(--angle)) translateY(var(--y, 0px));
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    width: 160px;
+    width: 170px;
+    overflow: hidden;
 }
 
 .polaroid:hover {
@@ -138,20 +139,16 @@ h2{
     box-shadow: 0 30px 50px rgba(0,0,0,0.4);
 }
 
-.polaroid img {
+.polaroid img, .polaroid video {
     width: 100%;
     height: 155px;
     object-fit: cover;
-    filter: sepia(8%) contrast(102%);
     display: block;
+    background-color: #000;
 }
 
-/* Perfect Rotation Fix inside Polaroid Frame */
-.fixed-rotate {
-    transform: rotate(90deg);
-    width: 155px !important;
-    height: 140px !important;
-    object-fit: cover;
+.polaroid img {
+    filter: sepia(8%) contrast(102%);
 }
 
 /* Message Box Layout */
@@ -223,60 +220,60 @@ p {
     <h1>🎂 Happy Birthday Sandra ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
-    <!-- Balanced Dynamic Layout with the New Safe Names -->
     <div class="photo-grid">
-        <!-- Photo 1: Childhood Left (Verbatim code) -->
+        <!-- Photo 1 -->
         <div class="polaroid" style="--angle: -8deg; --y: 10px;">
             <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Baby 1">
         </div>
         
-        <!-- Photo 2: Large New Pic 1 Fixed (Clean Name) -->
+        <!-- Photo 2 -->
         <div class="polaroid" style="--angle: 3deg; --y: -10px;">
-            <img class="fixed-rotate" src="sandra2.png" alt="Sandra 2">
+            <img src="sandra2.png" alt="Sandra 2">
         </div>
 
-        <!-- Photo 3: Childhood Center -->
+        <!-- Media 3: Memory Video -->
         <div class="polaroid" style="--angle: -2deg; --y: 15px;">
-            <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra Baby 2">
+            <video id="memoryVideo" loop muted playsinline>
+                <source src="instagram_lite_1780505688426.mp4" type="video/mp4">
+            </video>
         </div>
 
-        <!-- Photo 4: Large New Pic 2 Fixed (Clean Name) -->
+        <!-- Photo 4 -->
         <div class="polaroid" style="--angle: 5deg; --y: -8px;">
-            <img class="fixed-rotate" src="sandra4.png" alt="Sandra 4">
+            <img src="sandra4.png" alt="Sandra 4">
         </div>
 
-        <!-- Photo 5: Childhood Right -->
+        <!-- Photo 5 -->
         <div class="polaroid" style="--angle: -6deg; --y: 12px;">
             <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Baby 3">
         </div>
     </div>
 
-    <!-- Long Extended Heartfelt Birthday Message Box -->
+    <!-- Enhanced Deep Heartfelt Birthday Message Box -->
     <div class="message-box">
         <p>
-            Today is not just any ordinary day; it is the celebration of someone truly magnificent. 
-            On this beautiful day, Sandra, I want to take a moment to look back at the beautiful journey 
-            reflected in these pictures—from the sweet innocence of your childhood to the breathtaking, 
-            confident, and amazing person you have grown to become today.
+            Today is a deeply beautiful milestone—a day to honor the magnificent person you are. 
+            Looking at this timeline, from the absolute innocence of your childhood to the breathtaking, 
+            confident, and radiant woman you have become, is a reminder of how truly special your journey is.
         </p>
         <p>
-            Your presence has a magical way of bringing warmth and light to everything around you. 
-            Your beautiful smile has the power to erase the darkest clouds, your kindness provides comfort 
-            to everyone lucky enough to know you, and your gentle soul makes the world a much better place. 
-            Having you in this life is a beautiful blessing that words can never fully describe.
+            Seeing you there as a little girl, safe and happy beside your father, captures the purest essence of where your beautiful 
+            heart began. Those timeless moments paved the way for the incredible soul you carry today. Your presence has a rare, 
+            magical capacity to bring warmth and genuine light into everything and everyone around you. 
         </p>
 
-        <span class="highlight-msg">✨ "May your day be as endlessly beautiful and bright as your heart is." ✨</span>
+        <span class="highlight-msg">✨ "May your journey always be as warm, pure, and endlessly beautiful as the memories that shaped you." ✨</span>
 
         <p>
-            As you turn this new page today, I wish with all my heart that this year grants you everything 
-            you have ever dreamed of. May it bring you boundless joy that stays, success that knows absolutely 
-            no limits, and moments of peace that fill your soul. Never lose that unique spark that makes you who you are, 
-            and always keep chasing your dreams with the same beautiful strength.
+            Your smile holds the effortless power to clear away the darkest of days, your kindness offers real sanctuary, 
+            and your beautiful spirit makes this world a vastly better place. Having you in this life is a profound blessing 
+            that simple words can never fully capture. 
         </p>
         <p>
-            Enjoy every single second of your day, embrace all the love surrounding you, and know that you are deeply 
-            appreciated and celebrated today and every day. Happy Birthday, Sandra!
+            As you turn this new page, I wish with all my heart that this year grants you the fulfillment of your highest dreams. 
+            May it bring you boundless joy, success without limits, and deep, lasting peace. Never lose that unique spark that makes 
+            you precisely who you are. Enjoy every single second of your day, embrace the immense love surrounding you, and know that 
+            you are deeply celebrated. Happy Birthday, Sandra!
         </p>
         
         <span class="signature">With all my warmest thoughts and best wishes, always ❤️</span>
@@ -289,6 +286,7 @@ const chrono = document.getElementById('chrono');
 const introBox = document.getElementById('introBox');
 const birthdayCard = document.getElementById('birthdayCard');
 const bgMusic = document.getElementById('bgMusic');
+const memoryVideo = document.getElementById('memoryVideo');
 
 let timeLeft = 10;
 let heartInterval;
@@ -330,6 +328,8 @@ startBtn.addEventListener('click', () => {
             bgMusic.play().catch(error => console.log("Audio play failed:", error));
             
             birthdayCard.style.display = 'block';
+            memoryVideo.play().catch(error => console.log("Video auto-play failed:", error));
+            
             heartInterval = setInterval(createHeart, 250);
         }
     }, 1000);
