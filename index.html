@@ -1,0 +1,55 @@
+document.body.style.margin = "0";
+document.body.style.background = "#000";
+document.body.style.color = "#00ff88";
+document.body.style.fontFamily = "Consolas, monospace";
+document.body.style.padding = "40px";
+
+const text = `
+
+Initializing Birthday Protocol...
+
+Connecting to Sandra ❤️
+
+████████████████████████ 100%
+
+Access Granted.
+
+Loading Special Message...
+
+--------------------------------------------------
+
+Happy Birthday Sandra 🎂✨
+
+Today is not just another day.
+
+Today is the day someone truly special was born.
+
+May your smile stay bright,
+your heart stay happy,
+and your dreams become reality.
+
+You deserve happiness,
+success,
+love,
+and beautiful memories.
+
+Thank you for being the amazing person you are.
+
+Have an unforgettable birthday Sandra ❤️
+
+--------------------------------------------------
+
+End of Message.
+`;
+
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.body.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 30);
+    }
+}
+
+typeWriter();
