@@ -113,12 +113,12 @@ h2{
     opacity: 0.9;
 }
 
-/* Enhanced Grid Layout */
+/* Enhanced Grid Layout - Clean 3 Items */
 .photo-grid {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     margin-bottom: 40px;
     flex-wrap: wrap;
 }
@@ -129,7 +129,7 @@ h2{
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     transform: rotate(var(--angle)) translateY(var(--y, 0px));
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    width: 170px;
+    width: 180px;
     overflow: hidden;
 }
 
@@ -141,7 +141,7 @@ h2{
 
 .polaroid img, .polaroid video {
     width: 100%;
-    height: 155px;
+    height: 165px;
     object-fit: cover;
     display: block;
     background-color: #f9f9f9;
@@ -221,30 +221,20 @@ p {
     <h2>A Special Day For A Special Girl</h2>
 
     <div class="photo-grid">
-        <!-- Photo 1 (Encoded accent) -->
-        <div class="polaroid" style="--angle: -8deg; --y: 10px;">
+        <!-- Photo 1 -->
+        <div class="polaroid" style="--angle: -7deg; --y: 5px;">
             <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170645.png" alt="Sandra Baby 1" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170645.PNG'">
         </div>
-        
-        <!-- Photo 2 (Encoded accent & spaces for photo 2) -->
-        <div class="polaroid" style="--angle: 3deg; --y: -10px;">
-            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20173802_2.png" alt="Sandra 2" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20173802_2.PNG'">
-        </div>
 
-        <!-- Media 3: Memory Video -->
-        <div class="polaroid" style="--angle: -2deg; --y: 15px;">
+        <!-- Media 2: Memory Video (Centered Perfectly) -->
+        <div class="polaroid" style="--angle: 0deg; --y: -5px;">
             <video id="memoryVideo" loop muted playsinline>
                 <source src="instagram_lite_1780505688426.mp4" type="video/mp4">
             </video>
         </div>
 
-        <!-- Photo 4 (Encoded accent & spaces for photo 4) -->
-        <div class="polaroid" style="--angle: 5deg; --y: -8px;">
-            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20173735_2.png" alt="Sandra 4" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20173735_2.PNG'">
-        </div>
-
-        <!-- Photo 5 (Encoded accent) -->
-        <div class="polaroid" style="--angle: -6deg; --y: 12px;">
+        <!-- Photo 3 -->
+        <div class="polaroid" style="--angle: 7deg; --y: 5px;">
             <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170734.png" alt="Sandra Baby 3" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170734.PNG'">
         </div>
     </div>
