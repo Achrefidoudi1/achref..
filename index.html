@@ -182,9 +182,9 @@ p{
 </head>
 <body>
 
-<!-- Direct Stable MP3 URL for the Jazz Birthday Music -->
+<!-- Local Audio Player referencing your verbatim GitHub file name -->
 <audio id="bgMusic" loop preload="auto">
-    <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-jazz-piano-2226.mp3" type="audio/mpeg">
+    <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
 </audio>
 
 <!-- Intro Section with Chrono & Button -->
@@ -258,11 +258,11 @@ startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
 
-    // Pre-load and initialize track on initial click gesture to bypass modern browser autoplay blocks
+    // Force unlock audio context on user gesture
     bgMusic.play().then(() => {
         bgMusic.pause();
         bgMusic.currentTime = 0;
-    }).catch(e => console.log("Audio activation track:", e));
+    }).catch(e => console.log("Audio target unlocked:", e));
 
     const countdownTimer = setInterval(() => {
         timeLeft--;
@@ -273,9 +273,9 @@ startBtn.addEventListener('click', () => {
             clearInterval(countdownTimer);
             introBox.style.display = 'none';
             
-            // Play the dynamic jazz piano tune smoothly when the card pops up
-            bgMusic.volume = 0.65;
-            bgMusic.play().catch(error => console.log("Audio play blocked:", error));
+            // Play your custom local piano version smoothly when the card opens
+            bgMusic.volume = 0.7;
+            bgMusic.play().catch(error => console.log("Audio play failed:", error));
             
             birthdayCard.style.display = 'block';
             heartInterval = setInterval(createHeart, 250); // Hearts explosion 🎉
