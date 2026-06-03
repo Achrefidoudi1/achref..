@@ -113,7 +113,7 @@ h2{
     opacity: 0.9;
 }
 
-/* Enhanced Grid Layout for Photos and Videos */
+/* Enhanced Grid Layout */
 .photo-grid {
     display: flex;
     justify-content: center;
@@ -221,14 +221,14 @@ p {
     <h2>A Special Day For A Special Girl</h2>
 
     <div class="photo-grid">
-        <!-- Photo 1 -->
+        <!-- Photo 1 (Encoded accent) -->
         <div class="polaroid" style="--angle: -8deg; --y: 10px;">
-            <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Baby 1" onerror="this.src='Capture d\'écran 2026-06-03 170645.PNG'">
+            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170645.png" alt="Sandra Baby 1" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170645.PNG'">
         </div>
         
-        <!-- Photo 2 (Renamed Clean Path) -->
+        <!-- Photo 2 (Encoded accent & spaces for photo 2) -->
         <div class="polaroid" style="--angle: 3deg; --y: -10px;">
-            <img src="sandra2.png" alt="Sandra 2 Pic" onerror="tryAlternativeExtensions(this, 'sandra2')">
+            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20173802_2.png" alt="Sandra 2" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20173802_2.PNG'">
         </div>
 
         <!-- Media 3: Memory Video -->
@@ -238,14 +238,14 @@ p {
             </video>
         </div>
 
-        <!-- Photo 4 (Renamed Clean Path) -->
+        <!-- Photo 4 (Encoded accent & spaces for photo 4) -->
         <div class="polaroid" style="--angle: 5deg; --y: -8px;">
-            <img src="sandra4.png" alt="Sandra 4 Pic" onerror="tryAlternativeExtensions(this, 'sandra4')">
+            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20173735_2.png" alt="Sandra 4" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20173735_2.PNG'">
         </div>
 
-        <!-- Photo 5 -->
+        <!-- Photo 5 (Encoded accent) -->
         <div class="polaroid" style="--angle: -6deg; --y: 12px;">
-            <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Baby 3" onerror="this.src='Capture d\'écran 2026-06-03 170734.PNG'">
+            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170734.png" alt="Sandra Baby 3" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170734.PNG'">
         </div>
     </div>
 
@@ -291,23 +291,6 @@ const memoryVideo = document.getElementById('memoryVideo');
 let timeLeft = 10;
 let heartInterval;
 
-// Robust fallback script to catch any case mismatch from mobile/PC uploads
-function tryAlternativeExtensions(element, baseName) {
-    if (!element.dataset.step) {
-        element.dataset.step = "1";
-        element.src = baseName + ".jpg";
-    } else if (element.dataset.step === "1") {
-        element.dataset.step = "2";
-        element.src = baseName + ".jpeg";
-    } else if (element.dataset.step === "2") {
-        element.dataset.step = "3";
-        element.src = baseName + ".PNG";
-    } else if (element.dataset.step === "3") {
-        element.dataset.step = "4";
-        element.src = baseName + ".JPG";
-    }
-}
-
 function createHeart(){
     const heart = document.createElement('div');
     heart.classList.add('heart');
@@ -330,7 +313,7 @@ startBtn.addEventListener('click', () => {
     bgMusic.play().then(() => {
         bgMusic.pause();
         bgMusic.currentTime = 0;
-    }).catch(e => console.log("Audio unlock tracking:", e));
+    }).catch(e => console.log("Audio tracing unlock:", e));
 
     const countdownTimer = setInterval(() => {
         timeLeft--;
