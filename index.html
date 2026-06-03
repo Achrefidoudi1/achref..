@@ -182,9 +182,9 @@ p{
 </head>
 <body>
 
-<!-- Direct MP3 Audio Player for Background Music (Piano) -->
-<audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+<!-- Direct Stable MP3 URL for the Jazz Birthday Music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-jazz-piano-2226.mp3" type="audio/mpeg">
 </audio>
 
 <!-- Intro Section with Chrono & Button -->
@@ -258,8 +258,11 @@ startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
 
-    // Pre-load audio on user gesture so the browser doesn't block it
-    bgMusic.load();
+    // Pre-load and initialize track on initial click gesture to bypass modern browser autoplay blocks
+    bgMusic.play().then(() => {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+    }).catch(e => console.log("Audio activation track:", e));
 
     const countdownTimer = setInterval(() => {
         timeLeft--;
@@ -268,12 +271,11 @@ startBtn.addEventListener('click', () => {
 
         if (timeLeft <= 0) {
             clearInterval(countdownTimer);
-            
             introBox.style.display = 'none';
             
-            // Play the background music exactly when the card opens
-            bgMusic.volume = 0.6; // Balanced elegant volume
-            bgMusic.play().catch(error => console.log("Audio play failed:", error));
+            // Play the dynamic jazz piano tune smoothly when the card pops up
+            bgMusic.volume = 0.65;
+            bgMusic.play().catch(error => console.log("Audio play blocked:", error));
             
             birthdayCard.style.display = 'block';
             heartInterval = setInterval(createHeart, 250); // Hearts explosion 🎉
