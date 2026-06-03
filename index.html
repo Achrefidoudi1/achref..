@@ -1,55 +1,143 @@
-document.body.style.margin = "0";
-document.body.style.background = "#000";
-document.body.style.color = "#00ff88";
-document.body.style.fontFamily = "Consolas, monospace";
-document.body.style.padding = "40px";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sandra ❤️</title>
 
-const text = `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-Initializing Birthday Protocol...
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-Connecting to Sandra ❤️
+body{
+    height:100vh;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#7afcff,#feff9c);
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
 
-████████████████████████ 100%
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
 
-Access Granted.
+.card{
+    width:90%;
+    max-width:750px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:30px;
+    padding:50px;
+    text-align:center;
+    color:white;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    animation:show 2s ease;
+}
 
-Loading Special Message...
-
---------------------------------------------------
-
-Happy Birthday Sandra 🎂✨
-
-Today is not just another day.
-
-Today is the day someone truly special was born.
-
-May your smile stay bright,
-your heart stay happy,
-and your dreams become reality.
-
-You deserve happiness,
-success,
-love,
-and beautiful memories.
-
-Thank you for being the amazing person you are.
-
-Have an unforgettable birthday Sandra ❤️
-
---------------------------------------------------
-
-End of Message.
-`;
-
-let i = 0;
-
-function typeWriter() {
-    if (i < text.length) {
-        document.body.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 30);
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-typeWriter();
+h1{
+    font-size:3.5rem;
+    margin-bottom:15px;
+}
+
+h2{
+    font-weight:300;
+    margin-bottom:25px;
+}
+
+p{
+    font-size:1.15rem;
+    line-height:1.9;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    opacity:.7;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:.8;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🎂 Happy Birthday Sandra ❤️</h1>
+
+    <h2>A Special Day For A Special Girl</h2>
+
+    <p>
+        On this beautiful day, I just want to remind you how amazing you are.
+        Your smile brings light, your kindness brings comfort,
+        and your presence makes every moment better.
+        <br><br>
+        May this year bring you happiness beyond expectations,
+        success beyond limits, and memories you'll cherish forever.
+        Keep shining, keep dreaming, and never forget how special you truly are.
+        <br><br>
+        ✨ Today is your day, Sandra. Enjoy every second of it. ✨
+        <br><br>
+        With all my best wishes ❤️
+    </p>
+</div>
+
+<script>
+function createHeart(){
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.fontSize = (Math.random()*25+15)+'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,300);
+
+setTimeout(()=>{
+    alert("🎉 Happy Birthday Sandra ❤️ May your day be filled with joy, love and unforgettable moments.");
+},1500);
+</script>
+
+</body>
+</html>
