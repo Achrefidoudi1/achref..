@@ -130,6 +130,7 @@ h2{
     transform: rotate(var(--angle)) translateY(var(--y, 0px));
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     width: 160px;
+    overflow: hidden; /* Strict container lock to avoid image leakage */
 }
 
 .polaroid:hover {
@@ -141,20 +142,21 @@ h2{
 .polaroid img {
     width: 100%;
     height: 155px;
-    object-fit: cover;
+    object-fit: cover; /* Forces image to lock inside boundaries without slipping out */
     filter: sepia(8%) contrast(102%);
     display: block;
 }
 
-/* Rotation Fix inside Polaroid Frame without breaking boundaries */
-.fixed-rotate {
-    transform: rotate(90deg);
-    width: 155px !important;
-    height: 140px !important;
+/* Specific orientation fixes to handle camera upload metadata safely */
+.flip-fix {
+    transform: rotate(180deg); /* Adjusts inverted phone captures perfectly */
+}
+
+.side-fix {
     object-fit: cover;
 }
 
-/* Beautiful Extended Typography for the Message */
+/* Message Box Layout */
 .message-box {
     max-width: 800px;
     margin: 0 auto;
@@ -223,31 +225,31 @@ p {
     <h1>🎂 Happy Birthday Sandra ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
-    <!-- Clean Layout with New Safe Names -->
+    <!-- Balanced Dynamic Layout with the New Safe Names -->
     <div class="photo-grid">
         <!-- Photo 1: Childhood Left -->
         <div class="polaroid" style="--angle: -8deg; --y: 10px;">
-            <img src="sandra1.png" alt="Sandra Baby 1">
+            <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Baby 1">
         </div>
         
-        <!-- Photo 2: Large Pic 1 Fixed -->
+        <!-- Photo 2: Large New Pic 1 Fixed & Forced inside Cadre -->
         <div class="polaroid" style="--angle: 3deg; --y: -10px;">
-            <img class="fixed-rotate" src="sandra2.png" alt="Sandra 2">
+            <img class="flip-fix" src="sandra2.png" alt="Sandra 2">
         </div>
 
         <!-- Photo 3: Childhood Center -->
         <div class="polaroid" style="--angle: -2deg; --y: 15px;">
-            <img src="sandra3.png" alt="Sandra Baby 2">
+            <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra Baby 2">
         </div>
 
-        <!-- Photo 4: Large Pic 2 Fixed -->
+        <!-- Photo 4: Large New Pic 2 Fixed & Forced inside Cadre -->
         <div class="polaroid" style="--angle: 5deg; --y: -8px;">
-            <img class="fixed-rotate" src="sandra4.png" alt="Sandra 4">
+            <img class="side-fix" src="sandra4.png" alt="Sandra 4">
         </div>
 
         <!-- Photo 5: Childhood Right -->
         <div class="polaroid" style="--angle: -6deg; --y: 12px;">
-            <img src="sandra5.png" alt="Sandra Baby 3">
+            <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Baby 3">
         </div>
     </div>
 
@@ -308,7 +310,6 @@ function createHeart(){
     },8000);
 }
 
-// Start Countdown & Trigger Music
 startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
