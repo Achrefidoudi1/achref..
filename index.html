@@ -221,29 +221,29 @@ p {
     <h2>A Special Day For A Special Girl</h2>
 
     <div class="photo-grid">
-        <!-- Photo 1: Childhood Left -->
+        <!-- Photo 1 -->
         <div class="polaroid" style="--angle: -8deg; --y: 10px;">
             <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Baby 1" onerror="this.src='Capture d\'écran 2026-06-03 170645.PNG'">
         </div>
         
-        <!-- Photo 2: New Pic 1 (Correct Exact Name) -->
+        <!-- Photo 2 (Renamed Clean Path) -->
         <div class="polaroid" style="--angle: 3deg; --y: -10px;">
-            <img src="Capture d'écran 2026-06-03 173802_2.png" alt="Sandra 2" onerror="this.src='Capture d\'écran 2026-06-03 173802_2.PNG'">
+            <img src="sandra2.png" alt="Sandra 2 Pic" onerror="tryAlternativeExtensions(this, 'sandra2')">
         </div>
 
-        <!-- Media 3: Childhood Memory Video -->
+        <!-- Media 3: Memory Video -->
         <div class="polaroid" style="--angle: -2deg; --y: 15px;">
             <video id="memoryVideo" loop muted playsinline>
                 <source src="instagram_lite_1780505688426.mp4" type="video/mp4">
             </video>
         </div>
 
-        <!-- Photo 4: New Pic 2 (Correct Exact Name) -->
+        <!-- Photo 4 (Renamed Clean Path) -->
         <div class="polaroid" style="--angle: 5deg; --y: -8px;">
-            <img src="Capture d'écran 2026-06-03 173735_2.png" alt="Sandra 4" onerror="this.src='Capture d\'écran 2026-06-03 173735_2.PNG'">
+            <img src="sandra4.png" alt="Sandra 4 Pic" onerror="tryAlternativeExtensions(this, 'sandra4')">
         </div>
 
-        <!-- Photo 5: Childhood Right -->
+        <!-- Photo 5 -->
         <div class="polaroid" style="--angle: -6deg; --y: 12px;">
             <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Baby 3" onerror="this.src='Capture d\'écran 2026-06-03 170734.PNG'">
         </div>
@@ -290,6 +290,23 @@ const memoryVideo = document.getElementById('memoryVideo');
 
 let timeLeft = 10;
 let heartInterval;
+
+// Robust fallback script to catch any case mismatch from mobile/PC uploads
+function tryAlternativeExtensions(element, baseName) {
+    if (!element.dataset.step) {
+        element.dataset.step = "1";
+        element.src = baseName + ".jpg";
+    } else if (element.dataset.step === "1") {
+        element.dataset.step = "2";
+        element.src = baseName + ".jpeg";
+    } else if (element.dataset.step === "2") {
+        element.dataset.step = "3";
+        element.src = baseName + ".PNG";
+    } else if (element.dataset.step === "3") {
+        element.dataset.step = "4";
+        element.src = baseName + ".JPG";
+    }
+}
 
 function createHeart(){
     const heart = document.createElement('div');
