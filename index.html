@@ -148,11 +148,12 @@ h2{
     height: 150px;
     object-fit: cover;
     filter: sepia(10%) contrast(98%);
+    display: block;
 }
 
-/* Special rotate fix for side-taken pictures to look perfect */
-.rotate-right {
-    transform: rotate(90deg);
+/* Safe Rotation fix inside the frame so images don't block */
+.rotate-img {
+    transform: rotate(90deg) scale(1.2); /* Scaled to perfectly fit without gaps */
 }
 
 p{
@@ -210,9 +211,9 @@ p{
             <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra 1">
         </div>
         
-        <!-- Photo 2 (New Large Pic 1 - Right Side Up) -->
-        <div class="polaroid" style="--angle: 3deg;">
-            <img class="rotate-right" src="image_a2dd09.png" alt="Sandra 2">
+        <!-- Photo 2 (Large Pic 1 - Right Side Up Fixed) -->
+        <div class="polaroid" style="--angle: 3deg; overflow: hidden;">
+            <img class="rotate-img" src="image_a2dd09.png" alt="Sandra 2">
         </div>
 
         <!-- Photo 3 (Sghira 2) -->
@@ -220,9 +221,9 @@ p{
             <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra 3">
         </div>
 
-        <!-- Photo 4 (New Large Pic 2 - Right Side Up) -->
-        <div class="polaroid" style="--angle: 4deg;">
-            <img class="rotate-right" src="image_a2dcc5.png" alt="Sandra 4">
+        <!-- Photo 4 (Large Pic 2 - Right Side Up Fixed) -->
+        <div class="polaroid" style="--angle: 4deg; overflow: hidden;">
+            <img class="rotate-img" src="image_a2dcc5.png" alt="Sandra 4">
         </div>
 
         <!-- Photo 5 (Sghira 3) -->
