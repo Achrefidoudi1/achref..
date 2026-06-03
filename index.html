@@ -2,172 +2,141 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Sara 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sandra ❤️</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
 body{
-  margin:0;
-  height:100vh;
-  overflow:hidden;
-  font-family: Arial;
-  background: radial-gradient(circle at top,#1a0033,#000);
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+    height:100vh;
+    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#7afcff,#feff9c);
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
 }
 
-/* floating background lights */
-.bubbles span{
-  position:absolute;
-  width:10px;
-  height:10px;
-  background:#ff00cc;
-  border-radius:50%;
-  animation: rise 8s linear infinite;
-  bottom:-50px;
-}
-
-@keyframes rise{
-  to{
-    transform:translateY(-110vh);
-    opacity:0;
-  }
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .card{
-  width:80%;
-  max-width:700px;
-  padding:30px;
-  background:rgba(255,255,255,0.05);
-  border-radius:20px;
-  box-shadow:0 0 25px #00fff2;
-  backdrop-filter:blur(10px);
-  text-align:center;
+    width:90%;
+    max-width:750px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:30px;
+    padding:50px;
+    text-align:center;
+    color:white;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    animation:show 2s ease;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 h1{
-  color:#00fff2;
-  text-shadow:0 0 20px #00fff2;
+    font-size:3.5rem;
+    margin-bottom:15px;
 }
 
-#msg{
-  margin-top:20px;
-  font-size:18px;
-  line-height:1.6;
-  min-height:200px;
-  text-align:left;
-  white-space:pre-line;
-  border-right:2px solid white;
-  animation: blink 0.7s infinite;
+h2{
+    font-weight:300;
+    margin-bottom:25px;
 }
 
-@keyframes blink{
-  50%{border-color:transparent;}
+p{
+    font-size:1.15rem;
+    line-height:1.9;
 }
 
-button{
-  margin-top:20px;
-  padding:12px 25px;
-  border:none;
-  border-radius:10px;
-  background:#ff00cc;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 0 20px #ff00cc;
+.heart{
+    position:absolute;
+    color:white;
+    opacity:.7;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:.8;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<div class="bubbles" id="bubbles"></div>
-
 <div class="card">
-  <h1>Happy Birthday Sara 🎉</h1>
+    <h1>🎂 Happy Birthday Sandra ❤️</h1>
 
-  <button onclick="start()">Start Message 💌</button>
+    <h2>A Special Day For A Special Girl</h2>
 
-  <div id="msg"></div>
+    <p>
+        On this beautiful day, I just want to remind you how amazing you are.
+        Your smile brings light, your kindness brings comfort,
+        and your presence makes every moment better.
+        <br><br>
+        May this year bring you happiness beyond expectations,
+        success beyond limits, and memories you'll cherish forever.
+        Keep shining, keep dreaming, and never forget how special you truly are.
+        <br><br>
+        ✨ Today is your day, Sandra. Enjoy every second of it. ✨
+        <br><br>
+        With all my best wishes ❤️
+    </p>
 </div>
 
-<!-- 🎵 BACKGROUND MUSIC -->
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/01/audio_6c0c9d0f0b.mp3" type="audio/mp3">
-</audio>
-
 <script>
-/* bubbles background */
-for(let i=0;i<30;i++){
-  let s=document.createElement("span");
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=(3+Math.random()*5)+"s";
-  s.style.background=["#ff00cc","#00fff2","#ffff00","#00ff88"][Math.floor(Math.random()*4)];
-  document.getElementById("bubbles").appendChild(s);
+function createHeart(){
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.fontSize = (Math.random()*25+15)+'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
 }
 
-/* message */
-const text =
-`Dear Sara ❤️
+setInterval(createHeart,300);
 
-Today is a very special day…
-the world got brighter when you came into it ✨
-
-You deserve happiness, success and love in everything you do 💖
-
-Happy Birthday Sara 🎂
-Stay amazing forever 🌟`;
-
-let i = 0;
-
-function start(){
-  /* 🎵 MUSIC START */
-  let music = document.getElementById("music");
-  music.volume = 0.6;
-  music.play().catch(()=>{});
-
-  typeWriter();
-  confetti();
-}
-
-/* typing effect */
-function typeWriter(){
-  let el = document.getElementById("msg");
-
-  let interval = setInterval(()=>{
-    el.innerHTML += text[i] === "\n" ? "<br>" : text[i];
-    i++;
-    if(i >= text.length) clearInterval(interval);
-  },40);
-}
-
-/* confetti */
-function confetti(){
-  for(let i=0;i<100;i++){
-    let c=document.createElement("div");
-    c.style.position="absolute";
-    c.style.width="8px";
-    c.style.height="8px";
-    c.style.background=["#ff0","#0ff","#f0f","#0f0","#ff00cc"][Math.floor(Math.random()*5)];
-    c.style.left=Math.random()*100+"vw";
-    c.style.top="100vh";
-    c.style.animation="fall 4s linear forwards";
-    document.body.appendChild(c);
-
-    setTimeout(()=>c.remove(),4000);
-  }
-
-  let style=document.createElement("style");
-  style.innerHTML=`
-  @keyframes fall{
-    to{
-      transform:translateY(-120vh) rotate(720deg);
-      opacity:0;
-    }
-  }`;
-  document.head.appendChild(style);
-}
+setTimeout(()=>{
+    alert("🎉 Happy Birthday Sandra ❤️ May your day be filled with joy, love and unforgettable moments.");
+},1500);
 </script>
 
 </body>
