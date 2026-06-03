@@ -74,13 +74,13 @@ body{
 /* Birthday Card Pro Style */
 .card{
     width:92%;
-    max-width:800px;
+    max-width:900px;
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
-    padding: 40px;
+    padding: 35px;
     text-align: center;
     color: white;
     box-shadow: 0 30px 60px rgba(0,0,0,0.2);
@@ -112,7 +112,7 @@ h1{
 
 h2{
     font-weight: 300;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-size: 1.4rem;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -123,18 +123,18 @@ h2{
 .photo-grid {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 35px;
+    gap: 15px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
 }
 
 .polaroid {
     background: white;
-    padding: 12px 12px 25px 12px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    padding: 10px 10px 22px 10px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.18);
     transform: rotate(var(--angle));
     transition: all 0.4s ease;
-    width: 170px;
+    width: 155px;
 }
 
 .polaroid:hover {
@@ -145,9 +145,14 @@ h2{
 
 .polaroid img {
     width: 100%;
-    height: 160px;
+    height: 150px;
     object-fit: cover;
-    filter: sepia(15%) contrast(95%);
+    filter: sepia(10%) contrast(98%);
+}
+
+/* Special rotate fix for side-taken pictures to look perfect */
+.rotate-right {
+    transform: rotate(90deg);
 }
 
 p{
@@ -182,7 +187,7 @@ p{
 </head>
 <body>
 
-<!-- Local Audio Player referencing your verbatim GitHub file name -->
+<!-- Local Audio Player with your exact verbatim GitHub file name -->
 <audio id="bgMusic" loop preload="auto">
     <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
 </audio>
@@ -198,19 +203,31 @@ p{
     <h1>🎂 Happy Birthday Sandra ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
-    <!-- Vintage Polaroid Photo Album Layout with Sandra's Pictures -->
+    <!-- Vintage Polaroid Photo Album Layout with 5 Pictures -->
     <div class="photo-grid">
-        <!-- Photo 1 -->
-        <div class="polaroid" style="--angle: -6deg;">
-            <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Sghira 1">
+        <!-- Photo 1 (Sghira 1) -->
+        <div class="polaroid" style="--angle: -5deg;">
+            <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra 1">
         </div>
-        <!-- Photo 2 -->
+        
+        <!-- Photo 2 (New Large Pic 1 - Right Side Up) -->
+        <div class="polaroid" style="--angle: 3deg;">
+            <img class="rotate-right" src="image_a2dd09.png" alt="Sandra 2">
+        </div>
+
+        <!-- Photo 3 (Sghira 2) -->
+        <div class="polaroid" style="--angle: -2deg;">
+            <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra 3">
+        </div>
+
+        <!-- Photo 4 (New Large Pic 2 - Right Side Up) -->
         <div class="polaroid" style="--angle: 4deg;">
-            <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra Sghira 2">
+            <img class="rotate-right" src="image_a2dcc5.png" alt="Sandra 4">
         </div>
-        <!-- Photo 3 -->
-        <div class="polaroid" style="--angle: -3deg;">
-            <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Sghira 3">
+
+        <!-- Photo 5 (Sghira 3) -->
+        <div class="polaroid" style="--angle: -4deg;">
+            <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra 5">
         </div>
     </div>
 
@@ -258,11 +275,11 @@ startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
 
-    // Force unlock audio context on user gesture
+    // Unlock audio context safely on click gesture
     bgMusic.play().then(() => {
         bgMusic.pause();
         bgMusic.currentTime = 0;
-    }).catch(e => console.log("Audio target unlocked:", e));
+    }).catch(e => console.log("Audio unlock tracking:", e));
 
     const countdownTimer = setInterval(() => {
         timeLeft--;
@@ -273,7 +290,7 @@ startBtn.addEventListener('click', () => {
             clearInterval(countdownTimer);
             introBox.style.display = 'none';
             
-            // Play your custom local piano version smoothly when the card opens
+            // Play your local piano version track smoothly when card loads
             bgMusic.volume = 0.7;
             bgMusic.play().catch(error => console.log("Audio play failed:", error));
             
