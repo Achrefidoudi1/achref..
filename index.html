@@ -71,23 +71,38 @@ body{
     to { transform: scale(1.08); }
 }
 
-/* Birthday Card Pro Style */
+/* Birthday Card with Video Background */
 .card{
+    position: relative;
     width:92%;
     max-width:950px;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.25); /* Darker overlay for better contrast */
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 40px;
     padding: 40px;
     text-align: center;
     color: white;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
     display: none;
     max-height: 90vh;
     overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
     animation: showCard 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Video Background Styling inside the Card */
+.card-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.35; /* Blends nicely with the content */
+    pointer-events: none;
+    filter: blur(2px); /* Soft blur so text stays perfectly readable */
 }
 
 .card::-webkit-scrollbar { width: 6px; }
@@ -101,7 +116,7 @@ body{
 h1{
     font-size: 3.4rem;
     margin-bottom: 5px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 h2{
@@ -111,14 +126,15 @@ h2{
     letter-spacing: 3px;
     text-transform: uppercase;
     opacity: 0.9;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-/* Clean 3 Items Grid Layout */
+/* 2 Photos Side-by-Side Grid */
 .photo-grid {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
     margin-bottom: 40px;
     flex-wrap: wrap;
 }
@@ -126,28 +142,25 @@ h2{
 .polaroid {
     background: white;
     padding: 12px 12px 25px 12px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     transform: rotate(var(--angle)) translateY(var(--y, 0px));
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    width: 180px;
+    width: 190px;
     overflow: hidden;
 }
 
 .polaroid:hover {
     transform: rotate(0deg) scale(1.15) translateY(-15px);
     z-index: 10;
-    box-shadow: 0 30px 50px rgba(0,0,0,0.4);
-}
-
-.polaroid img, .polaroid video {
-    width: 100%;
-    height: 165px;
-    object-fit: cover;
-    display: block;
-    background-color: #f9f9f9;
+    box-shadow: 0 30px 50px rgba(0,0,0,0.5);
 }
 
 .polaroid img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    display: block;
+    background-color: #f9f9f9;
     filter: sepia(4%) contrast(101%);
 }
 
@@ -156,15 +169,17 @@ h2{
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 3;
 }
 
 p {
     font-size: 1.25rem;
     line-height: 2;
-    font-weight: 300;
-    color: #f6f6f6;
+    font-weight: 400; /* Slightly thicker font for perfect readability over the video */
+    color: #ffffff;
     margin-bottom: 25px;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .highlight-msg {
@@ -175,7 +190,7 @@ p {
     margin: 30px 0;
     display: block;
     line-height: 1.6;
-    text-shadow: 0 4px 15px rgba(255,255,255,0.2);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 .signature {
@@ -185,6 +200,7 @@ p {
     margin-top: 35px;
     display: block;
     color: #ffebef;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .heart{
@@ -217,24 +233,23 @@ p {
 
 <!-- Birthday Card Pro -->
 <div class="card" id="birthdayCard">
+    
+    <!-- Background Video Layer inside Card -->
+    <video id="memoryVideo" class="card-video-bg" loop muted playsinline>
+        <source src="instagram_lite_1780505688426.mp4" type="video/mp4">
+    </video>
+
     <h1>🎂 Happy Birthday Sandra ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
     <div class="photo-grid">
-        <!-- Photo 1 (Sandra Baby 1 - Working) -->
-        <div class="polaroid" style="--angle: -7deg; --y: 5px;">
+        <!-- Photo 1 -->
+        <div class="polaroid" style="--angle: -6deg; --y: 5px;">
             <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170645.png" alt="Sandra Baby 1" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170645.PNG'">
         </div>
 
-        <!-- Media 2: Memory Video (Working) -->
-        <div class="polaroid" style="--angle: 0deg; --y: -5px;">
-            <video id="memoryVideo" loop muted playsinline>
-                <source src="instagram_lite_1780505688426.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <!-- Photo 3 (Sandra Baby 3 - Working) -->
-        <div class="polaroid" style="--angle: 7deg; --y: 5px;">
+        <!-- Photo 2 -->
+        <div class="polaroid" style="--angle: 6deg; --y: 5px;">
             <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170734.png" alt="Sandra Baby 3" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170734.PNG'">
         </div>
     </div>
