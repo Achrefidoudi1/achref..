@@ -6,7 +6,7 @@
 <title>For Sandra ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
 
 *{
     margin:0;
@@ -32,7 +32,7 @@ body{
     100%{background-position:0% 50%;}
 }
 
-/* Intro Screen (Button + Countdown) */
+/* Intro Screen */
 .intro-container {
     text-align: center;
     z-index: 10;
@@ -74,17 +74,17 @@ body{
 /* Birthday Card Pro Style */
 .card{
     width:92%;
-    max-width:900px;
+    max-width:950px;
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
-    padding: 35px;
+    padding: 40px;
     text-align: center;
     color: white;
     box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-    display: none; /* Hidden at start */
+    display: none;
     max-height: 90vh;
     overflow-y: auto;
     animation: showCard 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
@@ -94,81 +94,100 @@ body{
 .card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
 
 @keyframes showCard{
-    from{
-        opacity:0;
-        transform: translateY(80px) scale(0.9);
-    }
-    to{
-        opacity:1;
-        transform: translateY(0) scale(1);
-    }
+    from{ opacity:0; transform: translateY(80px) scale(0.9); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
 }
 
 h1{
-    font-size: 3.2rem;
-    margin-bottom: 10px;
+    font-size: 3.4rem;
+    margin-bottom: 5px;
     text-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 h2{
     font-weight: 300;
-    margin-bottom: 25px;
-    font-size: 1.4rem;
-    letter-spacing: 2px;
+    margin-bottom: 35px;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
     opacity: 0.9;
 }
 
-/* Polaroid Photos Grid */
+/* Enhanced Photo Layout Grid */
 .photo-grid {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
     flex-wrap: wrap;
 }
 
 .polaroid {
     background: white;
-    padding: 10px 10px 22px 10px;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.18);
-    transform: rotate(var(--angle));
-    transition: all 0.4s ease;
-    width: 155px;
+    padding: 12px 12px 25px 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: rotate(var(--angle)) translateY(var(--y, 0px));
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    width: 160px;
 }
 
 .polaroid:hover {
-    transform: rotate(0deg) scale(1.1) translateY(-10px);
-    z-index: 5;
-    box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+    transform: rotate(0deg) scale(1.15) translateY(-15px);
+    z-index: 10;
+    box-shadow: 0 30px 50px rgba(0,0,0,0.4);
 }
 
 .polaroid img {
     width: 100%;
-    height: 150px;
+    height: 155px;
     object-fit: cover;
-    filter: sepia(10%) contrast(98%);
+    filter: sepia(8%) contrast(102%);
     display: block;
 }
 
-/* Safe Rotation fix inside the frame so images don't block */
-.rotate-img {
-    transform: rotate(90deg) scale(1.2); /* Scaled to perfectly fit without gaps */
+/* Rotation Fix inside Polaroid Frame without breaking boundaries */
+.fixed-rotate {
+    transform: rotate(90deg);
+    width: 155px !important;
+    height: 140px !important;
+    object-fit: cover;
 }
 
-p{
-    font-size:1.2rem;
-    line-height:1.9;
+/* Beautiful Extended Typography for the Message */
+.message-box {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+p {
+    font-size: 1.25rem;
+    line-height: 2;
     font-weight: 300;
+    color: #f6f6f6;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .highlight-msg {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 1.35rem;
+    font-size: 1.6rem;
     color: #fffdec;
-    margin: 20px 0;
+    margin: 30px 0;
     display: block;
+    line-height: 1.6;
+    text-shadow: 0 4px 15px rgba(255,255,255,0.2);
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    margin-top: 35px;
+    display: block;
+    color: #ffebef;
 }
 
 .heart{
@@ -188,12 +207,12 @@ p{
 </head>
 <body>
 
-<!-- Local Audio Player with your exact verbatim GitHub file name -->
+<!-- Local Audio Player -->
 <audio id="bgMusic" loop preload="auto">
     <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
 </audio>
 
-<!-- Intro Section with Chrono & Button -->
+<!-- Intro Section -->
 <div class="intro-container" id="introBox">
     <button class="start-btn" id="startBtn">Open Your Gift 🎁</button>
     <div class="countdown" id="chrono">00:10</div>
@@ -204,46 +223,64 @@ p{
     <h1>🎂 Happy Birthday Sandra ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
-    <!-- Vintage Polaroid Photo Album Layout with 5 Pictures -->
+    <!-- Perfect Planned Position for the Photo Album Layout -->
     <div class="photo-grid">
-        <!-- Photo 1 (Sghira 1) -->
-        <div class="polaroid" style="--angle: -5deg;">
-            <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra 1">
+        <!-- Photo 1: Childhood Left (Leaning Outward) -->
+        <div class="polaroid" style="--angle: -8deg; --y: 10px;">
+            <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Baby 1">
         </div>
         
-        <!-- Photo 2 (Large Pic 1 - Right Side Up Fixed) -->
-        <div class="polaroid" style="--angle: 3deg; overflow: hidden;">
-            <img class="rotate-img" src="image_a2dd09.png" alt="Sandra 2">
+        <!-- Photo 2: New Pic 1 Center-Left (Right Side Up Fixed) -->
+        <div class="polaroid" style="--angle: 3deg; --y: -10px;">
+            <img class="fixed-rotate" src="Capture d'écran 2026-06-03 173735.png" alt="Sandra 2">
         </div>
 
-        <!-- Photo 3 (Sghira 2) -->
-        <div class="polaroid" style="--angle: -2deg;">
-            <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra 3">
+        <!-- Photo 3: Childhood Center (Straight Anchor Point) -->
+        <div class="polaroid" style="--angle: -2deg; --y: 15px;">
+            <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra Baby 2">
         </div>
 
-        <!-- Photo 4 (Large Pic 2 - Right Side Up Fixed) -->
-        <div class="polaroid" style="--angle: 4deg; overflow: hidden;">
-            <img class="rotate-img" src="image_a2dcc5.png" alt="Sandra 4">
+        <!-- Photo 4: New Pic 2 Center-Right (Right Side Up Fixed) -->
+        <div class="polaroid" style="--angle: 5deg; --y: -8px;">
+            <img class="fixed-rotate" src="Capture d'écran 2026-06-03 173802.png" alt="Sandra 4">
         </div>
 
-        <!-- Photo 5 (Sghira 3) -->
-        <div class="polaroid" style="--angle: -4deg;">
-            <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra 5">
+        <!-- Photo 5: Childhood Right (Leaning Outward Balance) -->
+        <div class="polaroid" style="--angle: -6deg; --y: 12px;">
+            <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Baby 3">
         </div>
     </div>
 
-    <p>
-        On this beautiful day, I just want to remind you how amazing you are.
-        Your smile brings light, your kindness brings comfort,
-        and your presence makes every moment better.
-        <br>
-        <span class="highlight-msg">✨ Today is your day, Sandra. Enjoy every second of it. ✨</span>
-        May this year bring you happiness beyond expectations,
-        success beyond limits, and memories you'll cherish forever.
-        Keep shining, keep dreaming, and never forget how special you truly are.
-        <br><br>
-        With all my best wishes ❤️
-    </p>
+    <!-- Long Extended Heartfelt Birthday Message Box -->
+    <div class="message-box">
+        <p>
+            Today is not just any ordinary day; it is the celebration of someone truly magnificent. 
+            On this beautiful day, Sandra, I want to take a moment to look back at the beautiful journey 
+            reflected in these pictures—from the sweet innocence of your childhood to the breathtaking, 
+            confident, and amazing person you have grown to become today.
+        </p>
+        <p>
+            Your presence has a magical way of bringing warmth and light to everything around you. 
+            Your beautiful smile has the power to erase the darkest clouds, your kindness provides comfort 
+            to everyone lucky enough to know you, and your gentle soul makes the world a much better place. 
+            Having you in this life is a beautiful blessing that words can never fully describe.
+        </p>
+
+        <span class="highlight-msg">✨ "May your day be as endlessly beautiful and bright as your heart is." ✨</span>
+
+        <p>
+            As you turn this new page today, I wish with all my heart that this year grants you everything 
+            you have ever dreamed of. May it bring you boundless joy that stays, success that knows absolutely 
+            no limits, and moments of peace that fill your soul. Never lose that unique spark that makes you who you are, 
+            and always keep chasing your dreams with the same beautiful strength.
+        </p>
+        <p>
+            Enjoy every single second of your day, embrace all the love surrounding you, and know that you are deeply 
+            appreciated and celebrated today and every day. Happy Birthday, Sandra!
+        </p>
+        
+        <span class="signature">With all my warmest thoughts and best wishes, always ❤️</span>
+    </div>
 </div>
 
 <script>
@@ -291,7 +328,7 @@ startBtn.addEventListener('click', () => {
             clearInterval(countdownTimer);
             introBox.style.display = 'none';
             
-            // Play your local piano version track smoothly when card loads
+            // Play track smoothly when card loads
             bgMusic.volume = 0.7;
             bgMusic.play().catch(error => console.log("Audio play failed:", error));
             
