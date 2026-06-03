@@ -118,42 +118,42 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: 40px;
     flex-wrap: wrap;
 }
 
 .polaroid {
     background: white;
-    padding: 12px 12px 25px 12px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    padding: 10px 10px 25px 10px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.18);
     transform: rotate(var(--angle)) translateY(var(--y, 0px));
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     width: 160px;
-    overflow: hidden; /* Strict container lock to avoid image leakage */
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .polaroid:hover {
     transform: rotate(0deg) scale(1.15) translateY(-15px);
     z-index: 10;
-    box-shadow: 0 30px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.35);
 }
 
 .polaroid img {
     width: 100%;
-    height: 155px;
-    object-fit: cover; /* Forces image to lock inside boundaries without slipping out */
-    filter: sepia(8%) contrast(102%);
+    height: 150px;
+    object-fit: contain; /* Keeps the whole photo perfectly inside the frame without cropping */
+    background: #f7f7f7; /* Soft background to fill frame naturally if image ratio differs */
+    filter: sepia(5%) contrast(100%);
     display: block;
 }
 
-/* Specific orientation fixes to handle camera upload metadata safely */
-.flip-fix {
-    transform: rotate(180deg); /* Adjusts inverted phone captures perfectly */
-}
-
-.side-fix {
-    object-fit: cover;
+/* Specific fix to center and adjust large portrait/landscape phone uploads */
+.pic-centered {
+    object-fit: contain !important;
 }
 
 /* Message Box Layout */
@@ -225,30 +225,30 @@ p {
     <h1>🎂 Happy Birthday Sandra ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
-    <!-- Balanced Dynamic Layout with the New Safe Names -->
+    <!-- Balanced Dynamic Layout with exact verbatim filenames to bypass URL bugs -->
     <div class="photo-grid">
         <!-- Photo 1: Childhood Left -->
-        <div class="polaroid" style="--angle: -8deg; --y: 10px;">
+        <div class="polaroid" style="--angle: -6deg; --y: 5px;">
             <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Baby 1">
         </div>
         
-        <!-- Photo 2: Large New Pic 1 Fixed & Forced inside Cadre -->
-        <div class="polaroid" style="--angle: 3deg; --y: -10px;">
-            <img class="flip-fix" src="sandra2.png" alt="Sandra 2">
+        <!-- Photo 2: New Pic 1 (Verbatim target name to fix blockage) -->
+        <div class="polaroid" style="--angle: 4deg; --y: -5px;">
+            <img class="pic-centered" src="Capture d'écran 2026-06-03 173735.png" alt="Sandra 2">
         </div>
 
         <!-- Photo 3: Childhood Center -->
-        <div class="polaroid" style="--angle: -2deg; --y: 15px;">
+        <div class="polaroid" style="--angle: -2deg; --y: 8px;">
             <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra Baby 2">
         </div>
 
-        <!-- Photo 4: Large New Pic 2 Fixed & Forced inside Cadre -->
-        <div class="polaroid" style="--angle: 5deg; --y: -8px;">
-            <img class="side-fix" src="sandra4.png" alt="Sandra 4">
+        <!-- Photo 4: New Pic 2 (Verbatim target name to fix blockage) -->
+        <div class="polaroid" style="--angle: 5deg; --y: -4px;">
+            <img class="pic-centered" src="Capture d'écran 2026-06-03 173802.png" alt="Sandra 4">
         </div>
 
         <!-- Photo 5: Childhood Right -->
-        <div class="polaroid" style="--angle: -6deg; --y: 12px;">
+        <div class="polaroid" style="--angle: -5deg; --y: 6px;">
             <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Baby 3">
         </div>
     </div>
