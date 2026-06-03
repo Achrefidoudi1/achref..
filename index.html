@@ -6,7 +6,7 @@
 <title>For Sandra ❤️</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
 
 *{
     margin:0;
@@ -32,44 +32,137 @@ body{
     100%{background-position:0% 50%;}
 }
 
-.card{
-    width:90%;
-    max-width:750px;
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.3);
-    border-radius:30px;
-    padding:50px;
-    text-align:center;
-    color:white;
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
-    animation:show 2s ease;
+/* Intro Screen (Button + Countdown) */
+.intro-container {
+    text-align: center;
+    z-index: 10;
+    transition: all 1s ease;
 }
 
-@keyframes show{
+.start-btn {
+    padding: 18px 45px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ff758c;
+    background: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(255, 117, 140, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.start-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 117, 140, 0.6);
+}
+
+.countdown {
+    font-size: 6rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    display: none;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
+/* Birthday Card Pro Style */
+.card{
+    width:92%;
+    max-width:800px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    display: none; /* Hidden at start */
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: showCard 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.card::-webkit-scrollbar { width: 6px; }
+.card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+
+@keyframes showCard{
     from{
         opacity:0;
-        transform:translateY(50px);
+        transform: translateY(80px) scale(0.9);
     }
     to{
         opacity:1;
-        transform:translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 h1{
-    font-size:3.5rem;
-    margin-bottom:15px;
+    font-size: 3.2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 h2{
-    font-weight:300;
-    margin-bottom:25px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* Polaroid Photos Grid */
+.photo-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.polaroid {
+    background: white;
+    padding: 12px 12px 25px 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: rotate(var(--angle));
+    transition: all 0.4s ease;
+    width: 170px;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.1) translateY(-10px);
+    z-index: 5;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    filter: sepia(15%) contrast(95%);
 }
 
 p{
-    font-size:1.15rem;
+    font-size:1.2rem;
     line-height:1.9;
+    font-weight: 300;
+}
+
+.highlight-msg {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: #fffdec;
+    margin: 20px 0;
+    display: block;
 }
 
 .heart{
@@ -77,46 +170,94 @@ p{
     color:white;
     opacity:.7;
     animation:float 8s linear infinite;
+    z-index: 1;
 }
 
 @keyframes float{
-    from{
-        transform:translateY(100vh);
-        opacity:0;
-    }
-    20%{
-        opacity:.8;
-    }
-    to{
-        transform:translateY(-100px);
-        opacity:0;
-    }
+    from{ transform:translateY(100vh) rotate(0deg); opacity:0; }
+    20%{ opacity:.8; }
+    to{ transform:translateY(-100px) rotate(360deg); opacity:0; }
 }
+
+#yt-player { display: none; }
 </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>🎂 Happy Birthday Sandra ❤️</h1>
+<!-- Hidden YouTube Player for the Slow Piano Version -->
+<div id="yt-player"></div>
 
+<!-- Intro Section with Chrono & Button -->
+<div class="intro-container" id="introBox">
+    <button class="start-btn" id="startBtn">Open Your Gift 🎁</button>
+    <div class="countdown" id="chrono">00:10</div>
+</div>
+
+<!-- Birthday Card Pro -->
+<div class="card" id="birthdayCard">
+    <h1>🎂 Happy Birthday Sandra ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
+
+    <!-- Vintage Polaroid Photo Album Layout with Sandra's Pictures -->
+    <div class="photo-grid">
+        <!-- Photo 1 -->
+        <div class="polaroid" style="--angle: -6deg;">
+            <img src="Capture d'écran 2026-06-03 170645.png" alt="Sandra Sghira 1">
+        </div>
+        <!-- Photo 2 -->
+        <div class="polaroid" style="--angle: 4deg;">
+            <img src="Capture d'écran 2026-06-03 170713.png" alt="Sandra Sghira 2">
+        </div>
+        <!-- Photo 3 -->
+        <div class="polaroid" style="--angle: -3deg;">
+            <img src="Capture d'écran 2026-06-03 170734.png" alt="Sandra Sghira 3">
+        </div>
+    </div>
 
     <p>
         On this beautiful day, I just want to remind you how amazing you are.
         Your smile brings light, your kindness brings comfort,
         and your presence makes every moment better.
-        <br><br>
+        <br>
+        <span class="highlight-msg">✨ Today is your day, Sandra. Enjoy every second of it. ✨</span>
         May this year bring you happiness beyond expectations,
         success beyond limits, and memories you'll cherish forever.
         Keep shining, keep dreaming, and never forget how special you truly are.
-        <br><br>
-        ✨ Today is your day, Sandra. Enjoy every second of it. ✨
         <br><br>
         With all my best wishes ❤️
     </p>
 </div>
 
 <script>
+// Load Youtube Iframe API for the Piano Music
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+let player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('yt-player', {
+        height: '0',
+        width: '0',
+        videoId: 'N3Oun_4F5iw', // Slow Piano Version ID
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'loop': 1,
+            'playlist': 'N3Oun_4F5iw'
+        }
+    });
+}
+
+const startBtn = document.getElementById('startBtn');
+const chrono = document.getElementById('chrono');
+const introBox = document.getElementById('introBox');
+const birthdayCard = document.getElementById('birthdayCard');
+
+let timeLeft = 10;
+let heartInterval;
+
 function createHeart(){
     const heart = document.createElement('div');
     heart.classList.add('heart');
@@ -132,11 +273,30 @@ function createHeart(){
     },8000);
 }
 
-setInterval(createHeart,300);
+// Start Countdown & Sound
+startBtn.addEventListener('click', () => {
+    startBtn.style.display = 'none';
+    chrono.style.display = 'block';
 
-setTimeout(()=>{
-    alert("🎉 Happy Birthday Sandra ❤️ May your day be filled with joy, love and unforgettable moments.");
-},1500);
+    const countdownTimer = setInterval(() => {
+        timeLeft--;
+        
+        chrono.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdownTimer);
+            
+            introBox.style.display = 'none';
+            
+            if (player && typeof player.playVideo === 'function') {
+                player.playVideo();
+            }
+            
+            birthdayCard.style.display = 'block';
+            heartInterval = setInterval(createHeart, 250); // Hearts explosion
+        }
+    }, 1000);
+});
 </script>
 
 </body>
