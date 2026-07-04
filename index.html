@@ -8,12 +8,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
 body{
     height:100vh;
@@ -32,11 +27,7 @@ body{
     100%{background-position:0% 50%;}
 }
 
-.intro-container {
-    text-align: center;
-    z-index: 10;
-    transition: all 1s ease;
-}
+.intro-container { text-align: center; z-index: 10; }
 
 .start-btn {
     padding: 18px 45px;
@@ -51,147 +42,52 @@ body{
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.start-btn:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 20px 40px rgba(255, 117, 140, 0.6);
-}
+.start-btn:hover { transform: scale(1.1) translateY(-5px); }
 
-.countdown {
-    font-size: 6rem;
-    font-weight: 700;
-    color: white;
-    text-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    display: none;
-    animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.08); }
-}
+.countdown { font-size: 6rem; font-weight: 700; color: white; display: none; }
 
 .card{
     position: relative;
     width:92%;
     max-width:800px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
     padding: 40px;
     text-align: center;
     color: white;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
     display: none;
     max-height: 90vh;
     overflow-y: auto;
     z-index: 2;
-    animation: showCard 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation: showCard 2.5s forwards;
 }
-
-.card-video-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    opacity: 0.4;
-    pointer-events: none;
-    filter: blur(3px);
-}
-
-.card::-webkit-scrollbar { width: 6px; }
-.card::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
 
 @keyframes showCard{
     from{ opacity:0; transform: translateY(80px) scale(0.9); }
     to{ opacity:1; transform: translateY(0) scale(1); }
 }
 
-h1{
-    font-size: 3.4rem;
-    margin-bottom: 5px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
+h1{ font-size: 3.4rem; margin-bottom: 5px; }
+h2{ font-weight: 300; margin-bottom: 25px; font-size: 1.3rem; letter-spacing: 3px; text-transform: uppercase; }
 
-h2{
-    font-weight: 300;
-    margin-bottom: 25px;
-    font-size: 1.3rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    opacity: 0.9;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-
-/* CSS الجديد للتصويرة */
-.photo-container {
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-}
+.photo-container { margin-bottom: 30px; display: flex; justify-content: center; }
 
 .birthday-photo {
     width: 180px; 
     height: 180px;
     object-fit: cover;
-    border-radius: 50%; /* باش تظهر دائرية */
+    border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-.message-box {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 3;
-}
+.message-box { max-width: 700px; margin: 0 auto; z-index: 3; }
+p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; }
+.highlight-msg { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; color: #fffdec; margin: 30px 0; display: block; }
+.signature { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; display: block; color: #ffebef; }
 
-p {
-    font-size: 1.25rem;
-    line-height: 2;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 25px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-
-.highlight-msg {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.6rem;
-    color: #fffdec;
-    margin: 30px 0;
-    display: block;
-    line-height: 1.6;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-}
-
-.signature {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.5rem;
-    margin-top: 35px;
-    display: block;
-    color: #ffebef;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-
-.heart{
-    position:absolute;
-    color:white;
-    opacity:.7;
-    animation:float 8s linear infinite;
-    z-index: 1;
-}
-
-@keyframes float{
-    from{ transform:translateY(100vh) rotate(0deg); opacity:0; }
-    20%{ opacity:.8; }
-    to{ transform:translateY(-100px) rotate(360deg); opacity:0; }
-}
+.heart{ position:absolute; color:white; opacity:.7; animation:float 8s linear infinite; z-index: 1; }
+@keyframes float{ from{ transform:translateY(100vh) rotate(0deg); opacity:0; } to{ transform:translateY(-100px) rotate(360deg); opacity:0; } }
 </style>
 </head>
 <body>
@@ -206,38 +102,25 @@ p {
 </div>
 
 <div class="card" id="birthdayCard">
-    <video id="memoryVideo" class="card-video-bg" loop muted playsinline>
-        <source src="instagram_lite_1780505688426.mp4" type="video/mp4">
+    <!-- الفيديو المحدث -->
+    <video id="memoryVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.35; filter: blur(3px);" loop muted playsinline>
+        <source src="VID_20260130_111317_199.mp4" type="video/mp4">
     </video>
 
     <h1>🎂 Happy Birthday Fatma ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
-    <!-- التصويرة المضافة -->
     <div class="photo-container">
         <img src="1783126000237.jpg" alt="Fatma" class="birthday-photo">
     </div>
 
     <div class="message-box">
-        <p>
-            Today is a deeply beautiful milestone—a day to honor the magnificent person you are. 
-            Looking at the path you have traveled and the radiant woman you have become is a 
-            reminder of how truly special your journey is.
-        </p>
-        <p>
-            Your presence has a rare, magical capacity to bring warmth and genuine light into 
-            everything and everyone around you. Your kindness offers real sanctuary, and 
-            your beautiful spirit makes this world a vastly better place.
-        </p>
+        <p>Today is a deeply beautiful milestone—a day to honor the magnificent person you are. Looking at the path you have traveled and the radiant woman you have become is a reminder of how truly special your journey is.</p>
+        <p>Your presence has a rare, magical capacity to bring warmth and genuine light into everything and everyone around you.</p>
 
         <span class="highlight-msg">✨ "May your journey always be as warm, pure, and endlessly beautiful." ✨</span>
 
-        <p>
-            As you turn this new page, I wish with all my heart that this year grants you the 
-            fulfillment of your highest dreams. May it bring you boundless joy, success, 
-            and deep, lasting peace. Never lose that unique spark that makes you precisely who you are. 
-            Happy Birthday, Fatma!
-        </p>
+        <p>As you turn this new page, I wish with all my heart that this year grants you the fulfillment of your highest dreams. Happy Birthday, Fatma!</p>
         
         <span class="signature">With all my warmest thoughts and best wishes, always ❤️</span>
     </div>
@@ -250,7 +133,6 @@ const introBox = document.getElementById('introBox');
 const birthdayCard = document.getElementById('birthdayCard');
 const bgMusic = document.getElementById('bgMusic');
 const memoryVideo = document.getElementById('memoryVideo');
-
 let timeLeft = 10;
 
 function createHeart(){
@@ -266,15 +148,12 @@ function createHeart(){
 startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
-    bgMusic.play().then(() => { bgMusic.pause(); bgMusic.currentTime = 0; }).catch(e => console.log(e));
-
     const countdownTimer = setInterval(() => {
         timeLeft--;
         chrono.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
         if (timeLeft <= 0) {
             clearInterval(countdownTimer);
             introBox.style.display = 'none';
-            bgMusic.volume = 0.7;
             bgMusic.play();
             birthdayCard.style.display = 'block';
             memoryVideo.play();
@@ -283,6 +162,5 @@ startBtn.addEventListener('click', () => {
     }, 1000);
 });
 </script>
-
 </body>
 </html>
