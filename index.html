@@ -10,26 +10,37 @@
 
 *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-/* الـ Background اللي يتبدل */
 body{
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
+    background: #1a1a1a; /* لون غامق باش تبرز التصاور */
     position: relative;
 }
 
+/* تصغير التصاور في الخلفية */
 #bgSlider {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 10%; left: 10%; 
+    width: 80%; height: 80%;
     z-index: -1;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
+    opacity: 0.4;
     transition: background 1.5s ease-in-out;
+    filter: sepia(0.2) brightness(0.8);
 }
 
-/* الكارد */
+/* جو عيد الميلاد في الخلفية */
+.ambience {
+    position: absolute; top:0; left:0; width:100%; height:100%;
+    background: radial-gradient(circle, rgba(255,117,140,0.2) 0%, transparent 70%);
+    pointer-events: none; z-index: -2;
+}
+
 .intro-container { text-align: center; z-index: 10; }
 
 .start-btn {
@@ -53,7 +64,7 @@ body{
     position: relative;
     width:92%;
     max-width:800px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
@@ -96,6 +107,7 @@ p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; color: #fff; }
 </head>
 <body>
 
+<div class="ambience"></div>
 <div id="bgSlider"></div>
 
 <audio id="bgMusic" loop preload="auto">
@@ -128,7 +140,6 @@ p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; color: #fff; }
 </div>
 
 <script>
-// تبديل التصاور
 const bgSlider = document.getElementById('bgSlider');
 const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
 let currentIndex = 0;
@@ -137,10 +148,9 @@ function changeBackground() {
     bgSlider.style.backgroundImage = `url('${images[currentIndex]}')`;
     currentIndex = (currentIndex + 1) % images.length;
 }
-setInterval(changeBackground, 5000);
+setInterval(changeBackground, 4000);
 changeBackground();
 
-// الكود المعتاد
 const startBtn = document.getElementById('startBtn');
 const chrono = document.getElementById('chrono');
 const introBox = document.getElementById('introBox');
