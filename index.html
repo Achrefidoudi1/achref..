@@ -68,7 +68,7 @@ body{
     to{ opacity:1; transform: translateY(0) scale(1); }
 }
 
-h1{ font-size: 3.4rem; margin-bottom: 5px; }
+h1{ font-size: 3.4rem; margin-bottom: 5px; text-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 h2{ font-weight: 300; margin-bottom: 25px; font-size: 1.3rem; letter-spacing: 3px; text-transform: uppercase; }
 
 .photo-container { margin-bottom: 30px; display: flex; justify-content: center; }
@@ -79,10 +79,11 @@ h2{ font-weight: 300; margin-bottom: 25px; font-size: 1.3rem; letter-spacing: 3p
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 .message-box { max-width: 700px; margin: 0 auto; z-index: 3; }
-p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; }
+p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; color: #fff; }
 .highlight-msg { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; color: #fffdec; margin: 30px 0; display: block; }
 .signature { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; display: block; color: #ffebef; }
 
@@ -102,7 +103,7 @@ p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; }
 </div>
 
 <div class="card" id="birthdayCard">
-    <!-- الفيديو المحدث -->
+    <!-- الفيديو الجديد في الخلفية -->
     <video id="memoryVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.35; filter: blur(3px);" loop muted playsinline>
         <source src="VID_20260130_111317_199.mp4" type="video/mp4">
     </video>
