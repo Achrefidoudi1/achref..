@@ -10,23 +10,26 @@
 
 *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
+/* الـ Background اللي يتبدل */
 body{
     height:100vh;
-    background:linear-gradient(-45deg,#ff758c,#ff7eb3,#7afcff,#feff9c);
-    background-size:400% 400%;
-    animation:bg 12s ease infinite;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
+    position: relative;
 }
 
-@keyframes bg{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+#bgSlider {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    transition: background 1.5s ease-in-out;
 }
 
+/* الكارد */
 .intro-container { text-align: center; z-index: 10; }
 
 .start-btn {
@@ -44,13 +47,14 @@ body{
 
 .start-btn:hover { transform: scale(1.1) translateY(-5px); }
 
-.countdown { font-size: 6rem; font-weight: 700; color: white; display: none; }
+.countdown { font-size: 6rem; font-weight: 700; color: white; display: none; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
 
 .card{
     position: relative;
     width:92%;
     max-width:800px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
     padding: 40px;
@@ -92,6 +96,8 @@ p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; color: #fff; }
 </head>
 <body>
 
+<div id="bgSlider"></div>
+
 <audio id="bgMusic" loop preload="auto">
     <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
 </audio>
@@ -117,12 +123,24 @@ p { font-size: 1.25rem; line-height: 2; margin-bottom: 25px; color: #fff; }
         <p>
             kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
         </p>
-        
         <span class="signature">Dima m3ak ya okhti ❤️</span>
     </div>
 </div>
 
 <script>
+// تبديل التصاور
+const bgSlider = document.getElementById('bgSlider');
+const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
+let currentIndex = 0;
+
+function changeBackground() {
+    bgSlider.style.backgroundImage = `url('${images[currentIndex]}')`;
+    currentIndex = (currentIndex + 1) % images.length;
+}
+setInterval(changeBackground, 5000);
+changeBackground();
+
+// الكود المعتاد
 const startBtn = document.getElementById('startBtn');
 const chrono = document.getElementById('chrono');
 const introBox = document.getElementById('introBox');
