@@ -28,6 +28,7 @@ body{
     100% { background-position: 0% 50%; }
 }
 
+/* الـ 3 تصاور في الخلفية */
 #bgSlider {
     position: absolute;
     top: 5%; left: 5%; 
@@ -120,13 +121,12 @@ h1{ font-size: 3rem; margin-bottom: 10px; }
 const bgSlider = document.getElementById('bgSlider');
 const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
 let currentIndex = 0;
+let sliderInterval;
 
 function changeBackground() {
     bgSlider.style.backgroundImage = `url('${images[currentIndex]}')`;
     currentIndex = (currentIndex + 1) % images.length;
 }
-setInterval(changeBackground, 4000);
-changeBackground();
 
 const startBtn = document.getElementById('startBtn');
 const chrono = document.getElementById('chrono');
@@ -139,11 +139,18 @@ let timeLeft = 10;
 startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
+    
+    // بدء تبديل التصاور
+    sliderInterval = setInterval(changeBackground, 3000);
+    changeBackground();
+
     const timer = setInterval(() => {
         timeLeft--;
         chrono.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
         if (timeLeft <= 0) {
             clearInterval(timer);
+            clearInterval(sliderInterval); // إيقاف تبديل التصاور
+            bgSlider.style.display = 'none'; // إخفاء تصاور الخلفية
             introBox.style.display = 'none';
             bgMusic.play();
             birthdayCard.style.display = 'block';
