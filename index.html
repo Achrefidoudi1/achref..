@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Sandra ❤️</title>
+<title>For Fatma ❤️</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
@@ -32,7 +32,6 @@ body{
     100%{background-position:0% 50%;}
 }
 
-/* Intro Screen */
 .intro-container {
     text-align: center;
     z-index: 10;
@@ -71,12 +70,11 @@ body{
     to { transform: scale(1.08); }
 }
 
-/* Birthday Card with Video Background */
 .card{
     position: relative;
     width:92%;
-    max-width:950px;
-    background: rgba(0, 0, 0, 0.25); /* Darker overlay for better contrast */
+    max-width:800px;
+    background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 40px;
     padding: 40px;
@@ -86,12 +84,10 @@ body{
     display: none;
     max-height: 90vh;
     overflow-y: auto;
-    overflow-x: hidden;
     z-index: 2;
     animation: showCard 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
-/* Video Background Styling inside the Card */
 .card-video-bg {
     position: absolute;
     top: 0;
@@ -100,9 +96,9 @@ body{
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    opacity: 0.35; /* Blends nicely with the content */
+    opacity: 0.4;
     pointer-events: none;
-    filter: blur(2px); /* Soft blur so text stays perfectly readable */
+    filter: blur(3px);
 }
 
 .card::-webkit-scrollbar { width: 6px; }
@@ -121,7 +117,7 @@ h1{
 
 h2{
     font-weight: 300;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     font-size: 1.3rem;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -129,44 +125,24 @@ h2{
     text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-/* 2 Photos Side-by-Side Grid */
-.photo-grid {
+/* CSS الجديد للتصويرة */
+.photo-container {
+    margin-bottom: 30px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
 }
 
-.polaroid {
-    background: white;
-    padding: 12px 12px 25px 12px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    transform: rotate(var(--angle)) translateY(var(--y, 0px));
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    width: 190px;
-    overflow: hidden;
-}
-
-.polaroid:hover {
-    transform: rotate(0deg) scale(1.15) translateY(-15px);
-    z-index: 10;
-    box-shadow: 0 30px 50px rgba(0,0,0,0.5);
-}
-
-.polaroid img {
-    width: 100%;
-    height: 175px;
+.birthday-photo {
+    width: 180px; 
+    height: 180px;
     object-fit: cover;
-    display: block;
-    background-color: #f9f9f9;
-    filter: sepia(4%) contrast(101%);
+    border-radius: 50%; /* باش تظهر دائرية */
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-/* Message Box Layout */
 .message-box {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: center;
     position: relative;
@@ -176,7 +152,7 @@ h2{
 p {
     font-size: 1.25rem;
     line-height: 2;
-    font-weight: 400; /* Slightly thicker font for perfect readability over the video */
+    font-weight: 400;
     color: #ffffff;
     margin-bottom: 25px;
     text-shadow: 0 2px 8px rgba(0,0,0,0.5);
@@ -220,65 +196,47 @@ p {
 </head>
 <body>
 
-<!-- Local Audio Player -->
 <audio id="bgMusic" loop preload="auto">
     <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
 </audio>
 
-<!-- Intro Section -->
 <div class="intro-container" id="introBox">
     <button class="start-btn" id="startBtn">Open Your Gift 🎁</button>
     <div class="countdown" id="chrono">00:10</div>
 </div>
 
-<!-- Birthday Card Pro -->
 <div class="card" id="birthdayCard">
-    
-    <!-- Background Video Layer inside Card -->
     <video id="memoryVideo" class="card-video-bg" loop muted playsinline>
         <source src="instagram_lite_1780505688426.mp4" type="video/mp4">
     </video>
 
-    <h1>🎂 Happy Birthday Sandra ❤️</h1>
+    <h1>🎂 Happy Birthday Fatma ❤️</h1>
     <h2>A Special Day For A Special Girl</h2>
 
-    <div class="photo-grid">
-        <!-- Photo 1 -->
-        <div class="polaroid" style="--angle: -6deg; --y: 5px;">
-            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170645.png" alt="Sandra Baby 1" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170645.PNG'">
-        </div>
-
-        <!-- Photo 2 -->
-        <div class="polaroid" style="--angle: 6deg; --y: 5px;">
-            <img src="Capture%20d%27%C3%A9cran%202026-06-03%20170734.png" alt="Sandra Baby 3" onerror="this.src='Capture%20d%27%C3%A9cran%202026-06-03%20170734.PNG'">
-        </div>
+    <!-- التصويرة المضافة -->
+    <div class="photo-container">
+        <img src="1783126000237.jpg" alt="Fatma" class="birthday-photo">
     </div>
 
-    <!-- Message Box Layout -->
     <div class="message-box">
         <p>
             Today is a deeply beautiful milestone—a day to honor the magnificent person you are. 
-            Looking at this timeline, from the absolute innocence of your childhood to the breathtaking, 
-            confident, and radiant woman you have become, is a reminder of how truly special your journey is.
+            Looking at the path you have traveled and the radiant woman you have become is a 
+            reminder of how truly special your journey is.
         </p>
         <p>
-            Seeing you there as a little girl, safe and happy beside your father, captures the purest essence of where your beautiful 
-            heart began. Those timeless moments paved the way for the incredible soul you carry today. Your presence has a rare, 
-            magical capacity to bring warmth and genuine light into everything and everyone around you. 
+            Your presence has a rare, magical capacity to bring warmth and genuine light into 
+            everything and everyone around you. Your kindness offers real sanctuary, and 
+            your beautiful spirit makes this world a vastly better place.
         </p>
 
-        <span class="highlight-msg">✨ "May your journey always be as warm, pure, and endlessly beautiful as the memories that shaped you." ✨</span>
+        <span class="highlight-msg">✨ "May your journey always be as warm, pure, and endlessly beautiful." ✨</span>
 
         <p>
-            Your smile holds the effortless power to clear away the darkest of days, your kindness offers real sanctuary, 
-            and your beautiful spirit makes this world a vastly better place. Having you in this life is a profound blessing 
-            that simple words can never fully capture. 
-        </p>
-        <p>
-            As you turn this new page, I wish with all my heart that this year grants you the fulfillment of your highest dreams. 
-            May it bring you boundless joy, success without limits, and deep, lasting peace. Never lose that unique spark that makes 
-            you precisely who you are. Enjoy every single second of your day, embrace the immense love surrounding you, and know that 
-            you are deeply celebrated. Happy Birthday, Sandra!
+            As you turn this new page, I wish with all my heart that this year grants you the 
+            fulfillment of your highest dreams. May it bring you boundless joy, success, 
+            and deep, lasting peace. Never lose that unique spark that makes you precisely who you are. 
+            Happy Birthday, Fatma!
         </p>
         
         <span class="signature">With all my warmest thoughts and best wishes, always ❤️</span>
@@ -294,48 +252,33 @@ const bgMusic = document.getElementById('bgMusic');
 const memoryVideo = document.getElementById('memoryVideo');
 
 let timeLeft = 10;
-let heartInterval;
 
 function createHeart(){
     const heart = document.createElement('div');
     heart.classList.add('heart');
     heart.innerHTML = '❤️';
-
     heart.style.left = Math.random()*100 + 'vw';
     heart.style.fontSize = (Math.random()*25+15)+'px';
-
     document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },8000);
+    setTimeout(()=> heart.remove(), 8000);
 }
 
 startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
-
-    bgMusic.play().then(() => {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-    }).catch(e => console.log("Audio tracing unlock:", e));
+    bgMusic.play().then(() => { bgMusic.pause(); bgMusic.currentTime = 0; }).catch(e => console.log(e));
 
     const countdownTimer = setInterval(() => {
         timeLeft--;
-        
         chrono.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
-
         if (timeLeft <= 0) {
             clearInterval(countdownTimer);
             introBox.style.display = 'none';
-            
             bgMusic.volume = 0.7;
-            bgMusic.play().catch(error => console.log("Audio play failed:", error));
-            
+            bgMusic.play();
             birthdayCard.style.display = 'block';
-            memoryVideo.play().catch(error => console.log("Video auto-play failed:", error));
-            
-            heartInterval = setInterval(createHeart, 250);
+            memoryVideo.play();
+            setInterval(createHeart, 250);
         }
     }, 1000);
 });
