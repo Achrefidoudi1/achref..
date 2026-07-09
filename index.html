@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Fatma | Premium Experience</title>
+    <title>For Fatma ❤️</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: #000; font-family: 'Montserrat', sans-serif; overflow: hidden; }
-        .glass { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        /* خلفية الصور: واضحة، بدون blur، وبنسبة 16:9 */
+        .glass { background: rgba(30, 30, 30, 0.95); border: 1px solid rgba(255, 255, 255, 0.2); }
         .bg-slider { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background-size: contain; background-repeat: no-repeat; background-position: center; 
-            z-index: -1; transition: background 1s ease; 
+            z-index: -1; transition: background 0.5s ease; 
         }
     </style>
 </head>
@@ -23,10 +22,10 @@
     <audio id="pianoAudio" src="Happy Birthday (Piano Version).mp3"></audio>
     <audio id="mainAudio" src="I Begin.mp3"></audio>
 
-    <div id="card" class="glass p-10 rounded-[30px] shadow-2xl max-w-3xl w-[90%] text-center z-10">
+    <div id="card" class="glass p-10 rounded-[30px] shadow-2xl max-w-3xl w-[90%] text-center z-10 overflow-hidden">
         
         <div id="landing">
-            <h1 class="text-4xl mb-8 font-bold">A Special Gift for Fatma</h1>
+            <h1 class="text-4xl mb-8 font-bold">Open Your Gift 🎁</h1>
             <button onclick="start()" class="bg-[#c5a059] px-12 py-4 rounded-full text-lg hover:opacity-90 transition">Open Experience ✨</button>
         </div>
 
@@ -34,18 +33,18 @@
             <h2 id="chrono" class="text-9xl font-bold text-[#c5a059]">00:10</h2>
         </div>
 
-        <div id="content" class="hidden relative overflow-hidden rounded-[30px]">
-            <!-- الفيديو يغطي الكادر بالكامل -->
+        <div id="content" class="hidden relative">
             <video id="bgVideo" class="absolute inset-0 w-full h-full object-cover opacity-30 -z-10" loop muted playsinline>
                 <source src="VID_20260130_111317_199.mp4" type="video/mp4">
             </video>
             
-            <div class="relative z-10 p-8">
-                <h1 class="text-4xl text-[#c5a059] mb-6 font-bold">Happy Birthday Fatma</h1>
+            <div class="relative z-10 p-4">
+                <h1 class="text-4xl text-[#c5a059] mb-6 font-bold">🎂 Happy Birthday Fatma ❤️</h1>
                 <img src="1783126000237.jpg" class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-xl object-cover mb-6">
                 <p class="text-base leading-relaxed mb-6 font-light italic">
                     kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
                 </p>
+                <h3 class="text-2xl font-serif font-bold italic">Dima m3ak ya okhti ❤️</h3>
             </div>
         </div>
     </div>
