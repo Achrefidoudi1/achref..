@@ -1,163 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Fatma ❤️</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
-
-*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    position: relative;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* الـ 3 تصاور في الخلفية */
-#bgSlider {
-    position: absolute;
-    top: 5%; left: 5%; 
-    width: 90%; height: 90%;
-    z-index: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.3;
-    transition: background 1.5s ease-in-out;
-    pointer-events: none;
-}
-
-.intro-container { text-align: center; z-index: 10; }
-
-.start-btn {
-    padding: 18px 45px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #ff758c;
-    background: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    transition: all 0.4s ease;
-}
-
-.countdown { font-size: 6rem; font-weight: 700; color: white; display: none; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-
-.card{
-    position: relative;
-    width:92%;
-    max-width:700px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 40px;
-    padding: 40px;
-    text-align: center;
-    color: white;
-    display: none;
-    max-height: 85vh;
-    overflow-y: auto;
-    z-index: 5;
-    animation: showCard 2s forwards;
-}
-
-@keyframes showCard{
-    from{ opacity:0; transform: translateY(50px); }
-    to{ opacity:1; transform: translateY(0); }
-}
-
-h1{ font-size: 3rem; margin-bottom: 10px; }
-.birthday-photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 3px solid white; margin-bottom: 20px; }
-.message-box p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
-.signature { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; display: block; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Fatma | Premium Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #000; font-family: 'Montserrat', sans-serif; overflow: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .bg-slider { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; filter: blur(20px) brightness(0.4); z-index: -1; transition: background 1.5s ease-in-out; }
+    </style>
 </head>
-<body>
+<body class="flex items-center justify-center h-screen text-white">
 
-<audio id="bgMusic" loop preload="auto">
-    <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
-</audio>
+    <div id="bgSlider" class="bg-slider"></div>
 
-<div id="bgSlider"></div>
+    <audio id="mainAudio" src="I Begin.mp3"></audio>
 
-<div class="intro-container" id="introBox">
-    <button class="start-btn" id="startBtn">Open Your Gift 🎁</button>
-    <div class="countdown" id="chrono">00:10</div>
-</div>
+    <div id="card" class="glass p-12 rounded-[50px] shadow-2xl max-w-2xl w-[90%] text-center z-10">
+        
+        <div id="landing">
+            <h1 class="text-4xl font-serif text-[#c5a059] mb-8">A Special Gift for Fatma</h1>
+            <button onclick="start()" class="bg-[#c5a059] px-12 py-4 rounded-full text-lg hover:opacity-90 transition">Open Experience ✨</button>
+        </div>
 
-<div class="card" id="birthdayCard">
-    <video id="memoryVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.2; filter: blur(5px);" loop muted playsinline>
-        <source src="VID_20260130_111317_199.mp4" type="video/mp4">
-    </video>
+        <div id="counter" class="hidden">
+            <h2 id="chrono" class="text-9xl font-bold text-[#c5a059]">00:10</h2>
+        </div>
 
-    <h1>🎂 Happy Birthday Fatma ❤️</h1>
-    <img src="1783126000237.jpg" alt="Fatma" class="birthday-photo">
-    
-    <div class="message-box">
-        <p>
-            kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
-        </p>
-        <span class="signature">Dima m3ak ya okhti ❤️</span>
+        <div id="content" class="hidden relative">
+            <video id="bgVideo" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-[40px] -z-10" loop muted playsinline>
+                <source src="VID_20260130_111317_199.mp4" type="video/mp4">
+            </video>
+            <h1 class="text-5xl font-serif text-[#c5a059] mb-6">Happy Birthday Fatma</h1>
+            <img src="1783126000237.jpg" class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-xl object-cover mb-8">
+            <p class="text-lg leading-relaxed mb-8 font-light italic">
+                kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
+            </p>
+            <h3 class="text-2xl font-serif font-bold">Dima m3ak ya okhti ❤️</h3>
+        </div>
     </div>
-</div>
 
-<script>
-const bgSlider = document.getElementById('bgSlider');
-const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
-let currentIndex = 0;
-let sliderInterval;
+    <script>
+        const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
+        let idx = 0;
+        const bgSlider = document.getElementById('bgSlider');
 
-function changeBackground() {
-    bgSlider.style.backgroundImage = `url('${images[currentIndex]}')`;
-    currentIndex = (currentIndex + 1) % images.length;
-}
+        function start() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('counter').classList.remove('hidden');
+            
+            // تدوير الصور
+            let imgInterval = setInterval(() => {
+                bgSlider.style.backgroundImage = `url('${images[idx]}')`;
+                idx = (idx + 1) % images.length;
+            }, 3000);
 
-const startBtn = document.getElementById('startBtn');
-const chrono = document.getElementById('chrono');
-const introBox = document.getElementById('introBox');
-const birthdayCard = document.getElementById('birthdayCard');
-const bgMusic = document.getElementById('bgMusic');
-const memoryVideo = document.getElementById('memoryVideo');
-let timeLeft = 10;
-
-startBtn.addEventListener('click', () => {
-    startBtn.style.display = 'none';
-    chrono.style.display = 'block';
-    
-    // بدء تبديل التصاور
-    sliderInterval = setInterval(changeBackground, 3000);
-    changeBackground();
-
-    const timer = setInterval(() => {
-        timeLeft--;
-        chrono.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            clearInterval(sliderInterval); // إيقاف تبديل التصاور
-            bgSlider.style.display = 'none'; // إخفاء تصاور الخلفية
-            introBox.style.display = 'none';
-            bgMusic.play();
-            birthdayCard.style.display = 'block';
-            memoryVideo.play();
+            let time = 10;
+            let chrono = document.getElementById('chrono');
+            let timer = setInterval(() => {
+                time--;
+                chrono.innerText = `00:${time < 10 ? '0' + time : time}`;
+                if (time <= 0) {
+                    clearInterval(timer);
+                    clearInterval(imgInterval);
+                    document.getElementById('counter').classList.add('hidden');
+                    document.getElementById('content').classList.remove('hidden');
+                    document.getElementById('mainAudio').play();
+                    document.getElementById('bgVideo').play();
+                    bgSlider.classList.add('hidden'); // إخفاء خلفية الصور عند ظهور الكارد النهائي
+                }
+            }, 1000);
         }
-    }, 1000);
-});
-</script>
+    </script>
 </body>
 </html>
