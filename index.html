@@ -7,24 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: #000; font-family: 'Montserrat', sans-serif; overflow: hidden; }
-        .glass { 
-            background: rgba(0, 0, 0, 0.6); 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            position: relative;
-        }
-        /* الصور تظهر كاملة بوضوحها الأصلي في الخلفية */
+        /* الصور في الخلفية الأساسية */
         .bg-slider { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background-size: contain; background-repeat: no-repeat; background-position: center; 
-            z-index: 0; transition: background 0.5s ease; 
+            z-index: -1; transition: background 0.5s ease; 
         }
-        /* تأثير الـ Blur على الفيديو داخل الكادر */
-        .video-blur {
-            filter: blur(4px);
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: -1;
+        /* كادر الرسالة المربع */
+        .message-card { 
+            position: relative; width: 90%; max-width: 500px; aspect-ratio: 1/1; 
+            border-radius: 30px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1);
+        }
+        /* الفيديو داخل الكادر مع Blur */
+        .video-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; filter: blur(5px); z-index: 0;
         }
     </style>
 </head>
@@ -34,25 +31,22 @@
 
     <audio id="birthdayAudio" src="Happy Birthday (Piano Version).mp3"></audio>
 
-    <div id="introContainer" class="z-20 text-center">
-        <button id="startBtn" onclick="start()" class="bg-[#c5a059] px-12 py-4 rounded-full text-lg hover:opacity-90 transition">Open Experience ✨</button>
-        <h2 id="chrono" class="text-9xl font-bold text-white hidden">00:10</h2>
+    <div id="intro" class="text-center z-10">
+        <button onclick="start()" class="bg-[#c5a059] px-10 py-4 rounded-full font-bold hover:opacity-90">Open Experience ✨</button>
+        <h2 id="chrono" class="text-8xl font-bold mt-5 hidden">00:10</h2>
     </div>
 
-    <!-- الكادر النهائي للرسالة -->
-    <div id="card" class="glass p-10 rounded-[30px] shadow-2xl max-w-3xl w-[90%] text-center z-10 overflow-hidden hidden">
-        <!-- الفيديو داخل الكادر مع Blur -->
-        <video id="bgVideo" class="video-blur" loop muted playsinline>
+    <!-- الكادر المربع -->
+    <div id="card" class="message-card hidden shadow-2xl flex flex-col items-center justify-center p-6">
+        <video id="bgVideo" class="video-bg" loop muted playsinline>
             <source src="VID_20260130_111317_199.mp4" type="video/mp4">
         </video>
         
-        <div class="relative z-10 p-4">
-            <h1 class="text-4xl text-[#c5a059] mb-6 font-bold">🎂 Happy Birthday Fatma ❤️</h1>
-            <img src="1783126000237.jpg" class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-xl object-cover mb-6">
-            <p class="text-base leading-relaxed mb-6 font-light italic text-white drop-shadow-lg">
-                kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
+        <div class="relative z-10 text-center bg-black/40 p-4 rounded-2xl">
+            <h1 class="text-2xl text-[#c5a059] font-bold mb-2">Happy Birthday Fatma ❤️</h1>
+            <p class="text-sm italic leading-tight">
+                kol 3am w enti haya b khir ya fatma... ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi... 
             </p>
-            <h3 class="text-2xl font-serif font-bold italic">Dima m3ak ya okhti ❤️</h3>
         </div>
     </div>
 
@@ -62,7 +56,7 @@
         const bgSlider = document.getElementById('bgSlider');
 
         function start() {
-            document.getElementById('startBtn').classList.add('hidden');
+            document.getElementById('intro').classList.add('hidden');
             document.getElementById('chrono').classList.remove('hidden');
             
             let imgInterval = setInterval(() => {
@@ -78,9 +72,9 @@
                 if (time <= 0) {
                     clearInterval(timer);
                     clearInterval(imgInterval);
-                    document.getElementById('introContainer').classList.add('hidden');
+                    document.getElementById('chrono').classList.add('hidden');
                     document.getElementById('card').classList.remove('hidden');
-                    document.getElementById('birthdayAudio').play(); 
+                    document.getElementById('birthdayAudio').play();
                     document.getElementById('bgVideo').play();
                 }
             }, 1000);
