@@ -1,84 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Fatma ❤️</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background: #000; font-family: 'Montserrat', sans-serif; overflow: hidden; }
-        /* الصور في الخلفية الأساسية */
-        .bg-slider { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background-size: contain; background-repeat: no-repeat; background-position: center; 
-            z-index: -1; transition: background 0.5s ease; 
-        }
-        /* كادر الرسالة المربع */
-        .message-card { 
-            position: relative; width: 90%; max-width: 500px; aspect-ratio: 1/1; 
-            border-radius: 30px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1);
-        }
-        /* الفيديو داخل الكادر مع Blur */
-        .video-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; filter: blur(5px); z-index: 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Fatma ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
+
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460); /* خلفية فخمة */
+    position: relative;
+}
+
+/* تأثير الـ Confetti */
+.confetti { position: absolute; width: 10px; height: 10px; background-color: #f1c40f; border-radius: 50%; opacity: 0.6; animation: fall linear infinite; }
+@keyframes fall { to { transform: translateY(100vh); } }
+
+#bgSlider {
+    position: absolute;
+    top: 5%; left: 5%; 
+    width: 90%; height: 90%;
+    z-index: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3;
+    transition: background 1.5s ease-in-out;
+    pointer-events: none;
+}
+
+.intro-container { text-align: center; z-index: 10; }
+
+.start-btn {
+    padding: 18px 45px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
+    transition: transform 0.3s ease;
+}
+.start-btn:hover { transform: scale(1.05); }
+
+.countdown { font-size: 6rem; font-weight: 700; color: #f1c40f; display: none; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+
+.card{
+    position: relative;
+    width:92%;
+    max-width:700px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 40px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    display: none;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 5;
+    animation: showCard 2s forwards;
+}
+
+@keyframes showCard{ from{ opacity:0; transform: translateY(50px); } to{ opacity:1; transform: translateY(0); } }
+
+h1{ font-size: 3rem; margin-bottom: 10px; color: #f1c40f; }
+.birthday-photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #f1c40f; margin-bottom: 20px; }
+.message-box p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
+.signature { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; color: #f1c40f; display: block; }
+</style>
 </head>
-<body class="flex items-center justify-center h-screen text-white">
+<body>
 
-    <div id="bgSlider" class="bg-slider"></div>
+<audio id="bgMusic" loop preload="auto">
+    <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
+</audio>
 
-    <audio id="birthdayAudio" src="Happy Birthday (Piano Version).mp3"></audio>
+<div id="bgSlider"></div>
 
-    <div id="intro" class="text-center z-10">
-        <button onclick="start()" class="bg-[#c5a059] px-10 py-4 rounded-full font-bold hover:opacity-90">Open Experience ✨</button>
-        <h2 id="chrono" class="text-8xl font-bold mt-5 hidden">00:10</h2>
+<div class="intro-container" id="introBox">
+    <button class="start-btn" id="startBtn">Open Your Gift 🎁</button>
+    <div class="countdown" id="chrono">00:10</div>
+</div>
+
+<div class="card" id="birthdayCard">
+    <video id="memoryVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.2; filter: blur(5px);" loop muted playsinline>
+        <source src="VID_20260130_111317_199.mp4" type="video/mp4">
+    </video>
+
+    <h1>🎂 Happy Birthday Fatma ❤️</h1>
+    <img src="1783126000237.jpg" alt="Fatma" class="birthday-photo">
+    
+    <div class="message-box">
+        <p>
+            kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
+        </p>
+        <span class="signature">Dima m3ak ya okhti ❤️</span>
     </div>
+</div>
 
-    <!-- الكادر المربع -->
-    <div id="card" class="message-card hidden shadow-2xl flex flex-col items-center justify-center p-6">
-        <video id="bgVideo" class="video-bg" loop muted playsinline>
-            <source src="VID_20260130_111317_199.mp4" type="video/mp4">
-        </video>
-        
-        <div class="relative z-10 text-center bg-black/40 p-4 rounded-2xl">
-            <h1 class="text-2xl text-[#c5a059] font-bold mb-2">Happy Birthday Fatma ❤️</h1>
-            <p class="text-sm italic leading-tight">
-                kol 3am w enti haya b khir ya fatma... ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi... 
-            </p>
-        </div>
-    </div>
+<script>
+const bgSlider = document.getElementById('bgSlider');
+const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
+let currentIndex = 0;
+let sliderInterval;
 
-    <script>
-        const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
-        let idx = 0;
-        const bgSlider = document.getElementById('bgSlider');
+function createConfetti() {
+    for(let i=0; i<50; i++) {
+        let c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random()*100 + 'vw';
+        c.style.animationDuration = (Math.random()*3+2) + 's';
+        document.body.appendChild(c);
+    }
+}
 
-        function start() {
-            document.getElementById('intro').classList.add('hidden');
-            document.getElementById('chrono').classList.remove('hidden');
-            
-            let imgInterval = setInterval(() => {
-                bgSlider.style.backgroundImage = `url('${images[idx]}')`;
-                idx = (idx + 1) % images.length;
-            }, 3000);
+function changeBackground() {
+    bgSlider.style.backgroundImage = `url('${images[currentIndex]}')`;
+    currentIndex = (currentIndex + 1) % images.length;
+}
 
-            let time = 10;
-            let chrono = document.getElementById('chrono');
-            let timer = setInterval(() => {
-                time--;
-                chrono.innerText = `00:${time < 10 ? '0' + time : time}`;
-                if (time <= 0) {
-                    clearInterval(timer);
-                    clearInterval(imgInterval);
-                    document.getElementById('chrono').classList.add('hidden');
-                    document.getElementById('card').classList.remove('hidden');
-                    document.getElementById('birthdayAudio').play();
-                    document.getElementById('bgVideo').play();
-                }
-            }, 1000);
+const startBtn = document.getElementById('startBtn');
+const chrono = document.getElementById('chrono');
+const introBox = document.getElementById('introBox');
+const birthdayCard = document.getElementById('birthdayCard');
+const bgMusic = document.getElementById('bgMusic');
+const memoryVideo = document.getElementById('memoryVideo');
+let timeLeft = 10;
+
+startBtn.addEventListener('click', () => {
+    startBtn.style.display = 'none';
+    chrono.style.display = 'block';
+    createConfetti();
+    
+    sliderInterval = setInterval(changeBackground, 3000);
+    changeBackground();
+
+    const timer = setInterval(() => {
+        timeLeft--;
+        chrono.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            clearInterval(sliderInterval);
+            bgSlider.style.display = 'none';
+            introBox.style.display = 'none';
+            bgMusic.play();
+            birthdayCard.style.display = 'block';
+            memoryVideo.play();
         }
-    </script>
+    }, 1000);
+});
+</script>
 </body>
 </html>
