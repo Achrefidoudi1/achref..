@@ -8,46 +8,41 @@
     <style>
         body { background: #000; font-family: 'Montserrat', sans-serif; overflow: hidden; }
         .glass { background: rgba(30, 30, 30, 0.95); border: 1px solid rgba(255, 255, 255, 0.2); }
-        /* صور واضحة تماماً بدون أي Blur */
         .bg-slider { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background-size: contain; background-repeat: no-repeat; background-position: center; 
-            z-index: -1; transition: background 0.5s ease; 
+            background-size: cover; background-repeat: no-repeat; background-position: center; 
+            z-index: 0; transition: background 0.5s ease; 
         }
+        /* تأثير النبض للزر الفخم */
+        @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 15px #c5a059; } 50% { transform: scale(1.05); box-shadow: 0 0 30px #c5a059; } }
+        .waw-btn { animation: pulse 2s infinite; }
     </style>
 </head>
 <body class="flex items-center justify-center h-screen text-white">
 
     <div id="bgSlider" class="bg-slider"></div>
 
-    <audio id="pianoAudio" src="Happy Birthday (Piano Version).mp3"></audio>
-    <audio id="mainAudio" src="I Begin.mp3"></audio>
+    <audio id="birthdayAudio" src="Happy Birthday (Piano Version).mp3"></audio>
 
-    <div id="card" class="glass p-10 rounded-[30px] shadow-2xl max-w-3xl w-[90%] text-center z-10 overflow-hidden">
+    <div id="introContainer" class="z-20 text-center">
+        <button id="startBtn" onclick="start()" class="waw-btn bg-[#c5a059] px-12 py-5 rounded-full text-xl font-bold hover:bg-white hover:text-[#c5a059] transition-all duration-500 shadow-xl">
+            Open Experience ✨
+        </button>
+        <h2 id="chrono" class="text-9xl font-bold text-white hidden mt-10 transition-opacity duration-1000">00:10</h2>
+    </div>
+
+    <div id="card" class="glass p-10 rounded-[30px] shadow-2xl max-w-3xl w-[90%] text-center z-10 overflow-hidden hidden animate-in fade-in duration-1000">
+        <video id="bgVideo" class="absolute inset-0 w-full h-full object-cover opacity-30 -z-10" loop muted playsinline>
+            <source src="VID_20260130_111317_199.mp4" type="video/mp4">
+        </video>
         
-        <div id="landing">
-            <h1 class="text-4xl mb-8 font-bold">Open Your Gift 🎁</h1>
-            <button onclick="start()" class="bg-[#c5a059] px-12 py-4 rounded-full text-lg hover:opacity-90 transition">Open Experience ✨</button>
-        </div>
-
-        <div id="counter" class="hidden">
-            <h2 id="chrono" class="text-9xl font-bold text-[#c5a059]">00:10</h2>
-        </div>
-
-        <div id="content" class="hidden relative h-full">
-            <!-- الفيديو يغطي كامل الكادر الرمادي بوضوح -->
-            <video id="bgVideo" class="absolute inset-0 w-full h-full object-cover opacity-30 -z-10" loop muted playsinline>
-                <source src="VID_20260130_111317_199.mp4" type="video/mp4">
-            </video>
-            
-            <div class="relative z-10 p-4">
-                <h1 class="text-4xl text-[#c5a059] mb-6 font-bold">🎂 Happy Birthday Fatma ❤️</h1>
-                <img src="1783126000237.jpg" class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-xl object-cover mb-6">
-                <p class="text-base leading-relaxed mb-6 font-light italic">
-                    kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
-                </p>
-                <h3 class="text-2xl font-serif font-bold italic">Dima m3ak ya okhti ❤️</h3>
-            </div>
+        <div class="relative z-10 p-4">
+            <h1 class="text-4xl text-[#c5a059] mb-6 font-bold">🎂 Happy Birthday Fatma ❤️</h1>
+            <img src="1783126000237.jpg" class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-xl object-cover mb-6">
+            <p class="text-base leading-relaxed mb-6 font-light italic">
+                kol 3am w enti haya b khir ya fatma lyoum habit nekhu d9i9a w n9olek ya3tik essaha 3la kol chay fi a9al min 3am waliti okhti eli ma jabet-hech omi t3adina b barcha hajet w m3a el machakel el kol w kol eli 7awlou yfar9ouna 93adna dima yed wehda ya3tik essaha khater konti dima wa9fa m3aya w omrek ma siyabti yedi kol eli t3adina bih warra eli binatna 7aja 9wiya mostahil tetkasser w hamdolah eli enti fi hayati w kima konti dima m3aya bech n93ad dima m3ak ya3tik essaha eli wa9afti m3aya fi kol ghasra w 93adna dima a9wa min ay haja fi 3amek el jdid hadha ma netmenalek kan el farha eli dima konti ta3tiha linnes tistahli eddenya w ma fiha w fakhour bik w b chkoun waliti lyoum inshallah kol 3am n93dou wa9fine m3a ba3adhna 9dam ay haja kol 3am w enti b khir ya okhti
+            </p>
+            <h3 class="text-2xl font-serif font-bold italic">Dima m3ak ya okhti ❤️</h3>
         </div>
     </div>
 
@@ -57,9 +52,9 @@
         const bgSlider = document.getElementById('bgSlider');
 
         function start() {
-            document.getElementById('landing').classList.add('hidden');
-            document.getElementById('counter').classList.remove('hidden');
-            document.getElementById('pianoAudio').play();
+            document.getElementById('startBtn').classList.add('hidden');
+            const chrono = document.getElementById('chrono');
+            chrono.classList.remove('hidden');
             
             let imgInterval = setInterval(() => {
                 bgSlider.style.backgroundImage = `url('${images[idx]}')`;
@@ -67,19 +62,17 @@
             }, 3000);
 
             let time = 10;
-            let chrono = document.getElementById('chrono');
             let timer = setInterval(() => {
                 time--;
                 chrono.innerText = `00:${time < 10 ? '0' + time : time}`;
                 if (time <= 0) {
                     clearInterval(timer);
                     clearInterval(imgInterval);
-                    document.getElementById('pianoAudio').pause();
-                    document.getElementById('counter').classList.add('hidden');
-                    document.getElementById('content').classList.remove('hidden');
-                    document.getElementById('mainAudio').play();
+                    document.getElementById('introContainer').classList.add('hidden');
+                    const card = document.getElementById('card');
+                    card.classList.remove('hidden');
+                    document.getElementById('birthdayAudio').play(); 
                     document.getElementById('bgVideo').play();
-                    bgSlider.classList.add('hidden');
                 }
             }, 1000);
         }
