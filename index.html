@@ -16,11 +16,10 @@ body{
     justify-content:center;
     align-items:center;
     overflow:hidden;
-    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460); /* خلفية فخمة */
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
     position: relative;
 }
 
-/* تأثير الـ Confetti */
 .confetti { position: absolute; width: 10px; height: 10px; background-color: #f1c40f; border-radius: 50%; opacity: 0.6; animation: fall linear infinite; }
 @keyframes fall { to { transform: translateY(100vh); } }
 
@@ -83,7 +82,11 @@ h1{ font-size: 3rem; margin-bottom: 10px; color: #f1c40f; }
 </head>
 <body>
 
-<audio id="bgMusic" loop preload="auto">
+<audio id="audio10s" preload="auto">
+    <source src="Happy Birthday, Sister.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="audioPiano" loop preload="auto">
     <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
 </audio>
 
@@ -135,13 +138,17 @@ const startBtn = document.getElementById('startBtn');
 const chrono = document.getElementById('chrono');
 const introBox = document.getElementById('introBox');
 const birthdayCard = document.getElementById('birthdayCard');
-const bgMusic = document.getElementById('bgMusic');
+const audio10s = document.getElementById('audio10s');
+const audioPiano = document.getElementById('audioPiano');
 const memoryVideo = document.getElementById('memoryVideo');
 let timeLeft = 10;
 
 startBtn.addEventListener('click', () => {
     startBtn.style.display = 'none';
     chrono.style.display = 'block';
+    
+    audio10s.play();
+    
     createConfetti();
     
     sliderInterval = setInterval(changeBackground, 3000);
@@ -153,9 +160,13 @@ startBtn.addEventListener('click', () => {
         if (timeLeft <= 0) {
             clearInterval(timer);
             clearInterval(sliderInterval);
+            
+            audio10s.pause();
+            audio10s.currentTime = 0;
+            audioPiano.play();
+            
             bgSlider.style.display = 'none';
             introBox.style.display = 'none';
-            bgMusic.play();
             birthdayCard.style.display = 'block';
             memoryVideo.play();
         }
