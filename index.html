@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For olivya ❤️</title>
+<title>For Olivya 🖤🥀</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;700&family=Playfair+Display:ital,wght=1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;700&display=swap');
 
-*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 body{
     height:100vh;
@@ -16,55 +16,71 @@ body{
     justify-content:center;
     align-items:center;
     overflow:hidden;
-    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    background: radial-gradient(circle, #2a000a 0%, #0d0005 50%, #050505 100%);
     position: relative;
+    font-family: 'Poppins', sans-serif;
 }
 
-.confetti { position: absolute; width: 10px; height: 10px; background-color: #f1c40f; border-radius: 50%; opacity: 0.6; animation: fall linear infinite; }
-@keyframes fall { to { transform: translateY(100vh); } }
-
-#bgSlider {
-    position: absolute;
-    top: 5%; left: 5%; 
-    width: 90%; height: 90%;
-    z-index: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.3;
-    transition: background 1.5s ease-in-out;
-    pointer-events: none;
+/* Falling Goth Petals */
+.petal { 
+    position: absolute; 
+    width: 12px; 
+    height: 18px; 
+    background: linear-gradient(135deg, #800020, #3a000d); 
+    border-radius: 15px 0px 15px 0px; 
+    opacity: 0.7; 
+    animation: fall linear infinite; 
+    box-shadow: 0 0 5px rgba(128, 0, 32, 0.5);
+}
+@keyframes fall { 
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); } 
 }
 
 .intro-container { text-align: center; z-index: 10; }
 
 .start-btn {
     padding: 18px 45px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #fff;
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
-    border: none;
+    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #e0e0e0;
+    background: linear-gradient(135deg, #4a0011, #120005);
+    border: 1px solid #800020;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
-    transition: transform 0.3s ease;
+    box-shadow: 0 0 20px rgba(128, 0, 32, 0.6), inset 0 0 10px rgba(0,0,0,0.8);
+    transition: all 0.4s ease;
 }
-.start-btn:hover { transform: scale(1.05); }
+.start-btn:hover { 
+    transform: scale(1.05); 
+    color: #fff;
+    box-shadow: 0 0 35px rgba(186, 12, 47, 0.9), inset 0 0 15px rgba(128, 0, 32, 0.5);
+    border-color: #ba0c2f;
+}
 
-.countdown { font-size: 6rem; font-weight: 700; color: #f1c40f; display: none; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+.countdown { 
+    font-family: 'Cinzel', serif;
+    font-size: 6rem; 
+    font-weight: 700; 
+    color: #ba0c2f; 
+    display: none; 
+    text-shadow: 0 0 20px rgba(186, 12, 47, 0.8), 0 0 5px #000; 
+}
 
 .card{
     position: relative;
     width:92%;
     max-width:700px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    border-radius: 40px;
+    background: rgba(10, 10, 12, 0.75);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(186, 12, 47, 0.4);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(128, 0, 32, 0.3);
+    border-radius: 30px;
     padding: 40px;
     text-align: center;
-    color: white;
+    color: #e0e0e0;
     display: none;
     max-height: 85vh;
     overflow-y: auto;
@@ -72,12 +88,50 @@ body{
     animation: showCard 2s forwards;
 }
 
-@keyframes showCard{ from{ opacity:0; transform: translateY(50px); } to{ opacity:1; transform: translateY(0); } }
+@keyframes showCard{ from{ opacity:0; transform: translateY(50px) scale(0.95); } to{ opacity:1; transform: translateY(0) scale(1); } }
 
-h1{ font-size: 3rem; margin-bottom: 10px; color: #f1c40f; }
-.birthday-photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #f1c40f; margin-bottom: 20px; }
-.message-box p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
-.signature { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; color: #f1c40f; display: block; }
+h1{ 
+    font-family: 'UnifrakturMaguntia', cursive; 
+    font-size: 3.5rem; 
+    margin-bottom: 10px; 
+    color: #ba0c2f; 
+    text-shadow: 0 0 15px rgba(186, 12, 47, 0.6);
+    letter-spacing: 2px;
+}
+
+.birthday-photo { 
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 3px solid #ba0c2f; 
+    box-shadow: 0 0 20px rgba(186, 12, 47, 0.6);
+    margin-bottom: 20px; 
+    filter: contrast(1.05) brightness(0.95);
+}
+
+.message-box p { 
+    font-size: 1.05rem; 
+    line-height: 1.9; 
+    margin-bottom: 20px; 
+    color: #d1d1d1;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.signature { 
+    font-family: 'Cinzel', serif; 
+    font-style: italic; 
+    font-size: 1.4rem; 
+    color: #ba0c2f; 
+    display: block; 
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(186, 12, 47, 0.4);
+}
+
+/* Custom Scrollbar for Goth theme */
+.card::-webkit-scrollbar { width: 6px; }
+.card::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.5); }
+.card::-webkit-scrollbar-thumb { background: #500014; border-radius: 10px; }
 </style>
 </head>
 <body>
@@ -90,47 +144,37 @@ h1{ font-size: 3rem; margin-bottom: 10px; color: #f1c40f; }
     <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
 </audio>
 
-<div id="bgSlider"></div>
-
 <div class="intro-container" id="introBox">
-    <button class="start-btn" id="startBtn">Open Your Gift 🎁</button>
+    <button class="start-btn" id="startBtn">Unveil Your Gift 🖤</button>
     <div class="countdown" id="chrono">00:10</div>
 </div>
 
 <div class="card" id="birthdayCard">
-    <video id="memoryVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.2; filter: blur(5px);" loop muted playsinline>
-        <source src="VID_20260130_111317_199.mp4" type="video/mp4">
+    <video id="memoryVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.25; filter: blur(4px) grayscale(40%);" loop muted playsinline>
+        <source src="snaptik_7659121459658378516_v3.mp4" type="video/mp4">
     </video>
 
-    <h1>🎂 Happy Birthday Fatma ❤️</h1>
-    <img src="1783126000237.jpg" alt="Fatma" class="birthday-photo">
+    <h1> Happy Birthday Olivya 🥀</h1>
+    <img src="snaptik-app-7656504390030757141-slide-2.jpg" alt="Olivya" class="birthday-photo">
     
     <div class="message-box">
         <p>
-Happy birthday, Fatma! Today I wanted to take a minute to thank you for everything. In less than a year, you became the sister my mother never had. We went through so many things, and despite all the problems and everyone who tried to separate us, we always stayed united. Thank you for always standing by my side and never letting go of my hand. Everything we’ve been through showed that what’s between us is strong and impossible to break. Thank God you are in my life. Just like you were always there for me, I will always be there for you. Thank you for supporting me through every tough time, and for always staying stronger than anything else. In your new year, I wish you nothing but the joy you’ve always given to others. You deserve the world and everything in it, and I’m so proud of who you’ve become today. Hopefully, every year we’ll keep standing by each other against anything. Happy birthday, my sister!  Signature: Always with you, my sister ❤️        </p>
-        <span class="signature">Dima m3ak ya okhti ❤️</span>
+            Happy birthday, Olivya! Today I wanted to take a minute to thank you for everything. In less than a year, you became the sister my mother never had. We went through so many things, and despite all the problems and everyone who tried to separate us, we always stayed united. Thank you for always standing by my side and never letting go of my hand. Everything we’ve been through showed that what’s between us is strong and impossible to break. Thank God you are in my life. Just like you were always there for me, I will always be there for you. Thank you for supporting me through every tough time, and for always staying stronger than anything else. In your new year, I wish you nothing but the joy you’ve always given to others. You deserve the world and everything in it, and I’m so proud of who you’ve become today. Hopefully, every year we’ll keep standing by each other against anything. Happy birthday, my sister!
+        </p>
+        <span class="signature">Always with you, my sister 🖤🥀</span>
     </div>
 </div>
 
 <script>
-const bgSlider = document.getElementById('bgSlider');
-const images = ['1783128405262.jpg', '1783128405309.jpg', '1783128405348.jpg'];
-let currentIndex = 0;
-let sliderInterval;
-
-function createConfetti() {
-    for(let i=0; i<50; i++) {
-        let c = document.createElement('div');
-        c.className = 'confetti';
-        c.style.left = Math.random()*100 + 'vw';
-        c.style.animationDuration = (Math.random()*3+2) + 's';
-        document.body.appendChild(c);
+function createPetals() {
+    for(let i=0; i<40; i++) {
+        let p = document.createElement('div');
+        p.className = 'petal';
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.animationDuration = (Math.random()*4+3) + 's';
+        p.style.animationDelay = Math.random()*2 + 's';
+        document.body.appendChild(p);
     }
-}
-
-function changeBackground() {
-    bgSlider.style.backgroundImage = `url('${images[currentIndex]}')`;
-    currentIndex = (currentIndex + 1) % images.length;
 }
 
 const startBtn = document.getElementById('startBtn');
@@ -148,23 +192,18 @@ startBtn.addEventListener('click', () => {
     
     audio10s.play();
     
-    createConfetti();
-    
-    sliderInterval = setInterval(changeBackground, 3000);
-    changeBackground();
+    createPetals();
 
     const timer = setInterval(() => {
         timeLeft--;
         chrono.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            clearInterval(sliderInterval);
             
             audio10s.pause();
             audio10s.currentTime = 0;
             audioPiano.play();
             
-            bgSlider.style.display = 'none';
             introBox.style.display = 'none';
             birthdayCard.style.display = 'block';
             memoryVideo.play();
